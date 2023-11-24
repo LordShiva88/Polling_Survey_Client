@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import {
@@ -16,6 +16,9 @@ import toast from "react-hot-toast";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { logIn } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
 
   const {
     register,
@@ -31,15 +34,14 @@ const Login = () => {
     console.log(data.email, data.password, data.captcha);
     if (validateCaptcha(data.captcha)) {
       logIn(data.email, data.password)
-      .then((res) => {
-        console.log(res);
-        toast.success("Login Successful");
-      })
-      .catch(error=> toast.error(error.message))
-      
+        .then((res) => {
+          console.log(res);
+          toast.success("Login Successful");
+          navigate(from, { replace: true });
+        })
+        .catch((error) => toast.error(error.message));
     } else {
-      toast.error("Captcha Does not match")
-
+      toast.error("Captcha Does not match");
     }
   };
 

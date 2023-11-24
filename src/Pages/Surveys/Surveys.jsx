@@ -1,6 +1,9 @@
+import HelmetProvider from "../../Components/HelmetProvider";
+
 const Surveys = () => {
   return (
     <div className="bg-gray-200 p-8">
+      <HelmetProvider helmetTitle={'SurveySift || Surveys'}></HelmetProvider>
       <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-md">
         <div className="p-6">
           <div className="text-xl font-bold mb-2">Awesome Survey Title</div>

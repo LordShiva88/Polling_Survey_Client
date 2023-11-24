@@ -12,52 +12,96 @@ import {
   FaUsers,
 } from "react-icons/fa";
 import logo from "../assets/image/logo.png";
+import useAuth from "../Hooks/useAuth";
 
 const Dashboard = () => {
+  const user = useAuth();
+  const admin = true;
+  const surveyor = false;
   const navLink = (
     <>
-      <li>
-        <NavLink
-          to="/dashboard/adminDashboard"
-          className="flex items-center px-4 py-2 "
-        >
-          <FaHome className="mr-2" />
-          Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/dashboard/users" className="flex items-center px-4 py-2 ">
-          <FaUsers className="mr-2" />
-          All Users
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/dashboard/surveyRequest"
-          className="flex items-center px-4 py-2 "
-        >
-          <FaClipboardList className="mr-2" />
-          Survey Request
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/dashboard/allSurvey"
-          className="flex items-center px-4 py-2 "
-        >
-          <FaPoll className="mr-2" />
-          All Survey
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/dashboard/payment"
-          className="flex items-center px-4 py-2 "
-        >
-          <FaMoneyBill className="mr-2" />
-          Payment
-        </NavLink>
-      </li>
+      {/* Dashboard for admin */}
+      {user && admin && (
+        <>
+          <li>
+            <NavLink
+              to="/dashboard/adminDashboard"
+              className="flex items-center px-4 py-2 "
+            >
+              <FaHome className="mr-2" />
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard/users"
+              className="flex items-center px-4 py-2 "
+            >
+              <FaUsers className="mr-2" />
+              All Users
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard/surveyRequest"
+              className="flex items-center px-4 py-2 "
+            >
+              <FaClipboardList className="mr-2" />
+              Survey Request
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard/payment"
+              className="flex items-center px-4 py-2 "
+            >
+              <FaMoneyBill className="mr-2" />
+              Payment
+            </NavLink>
+          </li>
+        </>
+      )}
+      {/* Dashboard for admin */}
+      {user && surveyor && (
+        <>
+          <li>
+            <NavLink
+              to="/dashboard/surveyorHome"
+              className="flex items-center px-4 py-2 "
+            >
+              <FaHome className="mr-2" />
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard/post"
+              className="flex items-center px-4 py-2 "
+            >
+              <FaUsers className="mr-2" />
+              Post A Survey
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard/myPost"
+              className="flex items-center px-4 py-2 "
+            >
+              <FaClipboardList className="mr-2" />
+              My Posted
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard/allSurvey"
+              className="flex items-center px-4 py-2 "
+            >
+              <FaPoll className="mr-2" />
+              All Survey
+            </NavLink>
+          </li>
+        </>
+      )}
       <div className="divider"></div>
       <li>
         <NavLink to="/" className="flex items-center px-4 py-2 ">
@@ -103,7 +147,7 @@ const Dashboard = () => {
               </div>
               <div className="flex-1 px-2 mx-2 navbar-end">
                 <img src={logo} alt="" className="w-10" />
-                <h1 >SURVEY SIFT</h1>
+                <h1>SURVEY SIFT</h1>
               </div>
             </div>
             <Outlet></Outlet>
@@ -114,7 +158,7 @@ const Dashboard = () => {
               aria-label="close sidebar"
               className="drawer-overlay"
             ></label>
-            <ul className="menu p-4 w-80 min-h-full bg-base-200">{navLink}</ul>
+            <ul className="menu p-4  min-h-full bg-base-200">{navLink}</ul>
           </div>
         </div>
         <div className="flex">
@@ -125,7 +169,7 @@ const Dashboard = () => {
               </ul>
             </div>
           </div>
-          <div className="hidden md:block">
+          <div className="hidden md:block w-full lg:px-10 p-2">
             <Outlet></Outlet>
           </div>
         </div>
