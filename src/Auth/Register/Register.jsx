@@ -27,7 +27,6 @@ const Register = () => {
       const image = { image: data.photo[0] };
       const userImage = await ImageHost(image);
       const result = await createUser(data.email, data.password);
-      console.log(result);
       const { user } = result;
       await updateProfile(user, {
         displayName: data.name,
@@ -37,6 +36,7 @@ const Register = () => {
         name: data.name,
         email: data.email,
         image: userImage,
+        role: "user",
       };
       const res = await axios.post("/api/v1/users", userInfo);
       if (res.data.insertedId) {

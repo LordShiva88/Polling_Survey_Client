@@ -36,11 +36,12 @@ const AuthProvider = ({children}) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       if (currentUser) {
+        // get token and store client
         const userInfo = { email: currentUser.email };
         axios.post("/api/v1/jwt", userInfo).then((res) => {
-          if (res.data.token) {
-            localStorage.setItem("access-token", res.data.token);
-            setLoading(false);
+          if (res.data) {
+            localStorage.setItem("access-token", res.data);
+            setLoading(false)
           }
         });
       } else {
@@ -52,6 +53,7 @@ const AuthProvider = ({children}) => {
       return unSubscribe();
     };
   }, [axios]);
+
 
   const authInfo = {
     createUser,

@@ -11,11 +11,11 @@ import Container from "../../Components/Container/Container";
 import { useForm } from "react-hook-form";
 import HelmetProvider from "../../Components/HelmetProvider";
 import useAuth from "../../Hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const {name}= useAuth()
-  console.log(name)
+  const { logIn } = useAuth();
 
   const {
     register,
@@ -29,10 +29,17 @@ const Login = () => {
 
   const onSubmit = (data) => {
     console.log(data.email, data.password, data.captcha);
-    if(validateCaptcha(data.captcha)){
-      console.log(data.email, data.password, data.captcha);
-    }else{
-      alert('Captcha Does not match')
+    if (validateCaptcha(data.captcha)) {
+      logIn(data.email, data.password)
+      .then((res) => {
+        console.log(res);
+        toast.success("Login Successful");
+      })
+      .catch(error=> toast.error(error.message))
+      
+    } else {
+      toast.error("Captcha Does not match")
+
     }
   };
 
@@ -70,9 +77,9 @@ const Login = () => {
                 {...register("email", { required: true })}
                 className="mt-1 p-2 w-full border border-gray-300 rounded-md"
               />
-              {
-                errors.email && <span className="text-red-500">This field is required</span>
-              }
+              {errors.email && (
+                <span className="text-red-500">This field is required</span>
+              )}
             </div>
 
             <div className="relative">
@@ -87,9 +94,9 @@ const Login = () => {
                 {...register("password", { required: true })}
                 className="mt-1 p-2 w-full border border-gray-300 rounded-md"
               />
-              {
-                errors.password && <span className="text-red-500">This field is required</span>
-              }
+              {errors.password && (
+                <span className="text-red-500">This field is required</span>
+              )}
               <span
                 onClick={() => setShowPassword(!showPassword)}
                 className="mt-5 absolute inset-y-0 right-0 flex items-center pr-2 cursor-pointer"

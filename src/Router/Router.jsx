@@ -5,6 +5,10 @@ import Login from "../Auth/Login/Login";
 import Register from "../Auth/Register/Register";
 import Surveys from "../Pages/Surveys/Surveys";
 import SurveysDetails from "../Pages/SurveysDetails/SurveysDetails";
+import Dashboard from "../Layout/Dashboard";
+import AboutUs from "../Pages/AboutUs/AboutUs";
+import ContactUs from "../Pages/ContactUs/ContactUs";
+import AdminDashboard from "../Pages/Dashboard/Admin/AdminDashboard/AdminDashboard";
 
 const Router = createBrowserRouter([
   {
@@ -16,7 +20,7 @@ const Router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: "/",
+        path: "/surveys",
         element: <Surveys></Surveys>,
       },
       {
@@ -24,8 +28,12 @@ const Router = createBrowserRouter([
         element: <SurveysDetails></SurveysDetails>,
       },
       {
-        path: "/",
-        element: <Home></Home>,
+        path: "/about",
+        element: <AboutUs></AboutUs>,
+      },
+      {
+        path: "/contact",
+        element: <ContactUs></ContactUs>,
       },
     ],
   },
@@ -36,6 +44,16 @@ const Router = createBrowserRouter([
   {
     path: "/register",
     element: <Register></Register>,
+  },
+  {
+    path: "dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: 'adminDashboard',
+        element: <AdminDashboard></AdminDashboard>
+      }
+    ]
   },
 ]);
 
