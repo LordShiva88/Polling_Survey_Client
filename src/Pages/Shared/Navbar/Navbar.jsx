@@ -101,7 +101,10 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="flex items-center gap-5">
-          <NavLink to={'/checkout'} className="btn flex items-center space-x-2 btn-outline btn-info">
+          <NavLink
+            to={"/checkout"}
+            className="btn flex items-center space-x-2 btn-outline btn-info"
+          >
             <FaCrown /> PRO
           </NavLink>
           <div className="dropdown dropdown-end">

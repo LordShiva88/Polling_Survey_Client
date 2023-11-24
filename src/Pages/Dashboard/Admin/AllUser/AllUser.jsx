@@ -60,10 +60,17 @@ const AllUser = () => {
                     <select className="select select-info w-full max-w-xs">
                       <option disabled selected>
                         <span className="text">{user?.role}</span>
-                      </option>na
-                      <option><button>Surveyor</button></option>
-                      <option><button>Admin</button></option>
-                      <option><button>Pro User</button></option>
+                      </option>
+                      na
+                      <option>
+                        <button>Surveyor</button>
+                      </option>
+                      <option>
+                        <button>Admin</button>
+                      </option>
+                      <option>
+                        <button>Pro User</button>
+                      </option>
                     </select>
                   </td>
                   <th>

@@ -1,7 +1,6 @@
 import { Helmet } from "react-helmet";
 
-
-const HelmetProvider = ({helmetTitle}) => {
+const HelmetProvider = ({ helmetTitle }) => {
   return (
     <Helmet>
       <title>{helmetTitle}</title>

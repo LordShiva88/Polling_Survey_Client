@@ -18,7 +18,7 @@ const BannerHome = () => {
             to="/register"
             className="bg-blue-500 hover:bg-blue-700 text-white py-2 rounded-full btn"
           >
-           Explore More
+            Explore More
           </Link>
         </div>
         <div className="w-full md:w-1/2">

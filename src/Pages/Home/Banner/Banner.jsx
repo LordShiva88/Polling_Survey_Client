@@ -6,7 +6,6 @@ import "swiper/css/navigation";
 import "@smastrom/react-rating/style.css";
 import BannerHome from "../../../Components/BannerHome";
 const Banner = () => {
-  
   return (
     <div className="">
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">

@@ -1,5 +1,4 @@
 import { NavLink, Outlet } from "react-router-dom";
-import Container from "../Components/Container/Container";
 import {
   FaBars,
   FaClipboardList,
@@ -13,6 +12,7 @@ import {
 } from "react-icons/fa";
 import logo from "../assets/image/logo.png";
 import useAuth from "../Hooks/useAuth";
+import Container from "../Components/Container";
 
 const Dashboard = () => {
   const user = useAuth();

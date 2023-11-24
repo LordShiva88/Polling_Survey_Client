@@ -44,24 +44,36 @@ const Footer = () => {
         </div>
 
         <div className="space-y-2">
-          <h2 className="text-lg font-semibold mb-2 text-gray-400">Follow Us</h2>
+          <h2 className="text-lg font-semibold mb-2 text-gray-400">
+            Follow Us
+          </h2>
           <p>Connect with us on social media</p>
           <nav>
-            <div className="flex gap-5 text-3xl"> {/* Adjust font size here */}
-              <a href="#linkedin" className="hover:text-blue-500 transition duration-300">
+            <div className="flex gap-5 text-3xl">
+              {" "}
+              {/* Adjust font size here */}
+              <a
+                href="#linkedin"
+                className="hover:text-blue-500 transition duration-300"
+              >
                 <FaLinkedin />
               </a>
-              <a href="#facebook" className="hover:text-blue-500 transition duration-300">
+              <a
+                href="#facebook"
+                className="hover:text-blue-500 transition duration-300"
+              >
                 <FaFacebook />
               </a>
-              <a href="#github" className="hover:text-blue-500 transition duration-300">
+              <a
+                href="#github"
+                className="hover:text-blue-500 transition duration-300"
+              >
                 <FaGithub />
               </a>
             </div>
           </nav>
         </div>
       </div>
-      
 
       <div className="bg-gray-700 text-gray-300 ">
         <div className="flex items-center justify-center gap-5 p-4 container mx-auto">

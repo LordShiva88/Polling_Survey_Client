@@ -1,17 +1,12 @@
 import { FaMoneyBill, FaUser } from "react-icons/fa";
 import { FcCheckmark } from "react-icons/fc";
-
 import { TfiEmail } from "react-icons/tfi";
-import Container from "../../Components/Container/Container";
 import useAuth from "../../Hooks/useAuth";
-import { useNavigate } from "react-router-dom";
 const CheckOut = () => {
+  const { user, loading } = useAuth();
 
-  const {user, loading} = useAuth();
-  const navigate = useNavigate();
-
-  if(loading){
-    return <p>Loading</p>
+  if (loading) {
+    return <p>loading ...........</p>;
   }
 
   const facility = [

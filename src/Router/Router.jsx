@@ -46,7 +46,11 @@ const Router = createBrowserRouter([
       },
       {
         path: "/checkout",
-        element: <PrivateRouter><CheckOut></CheckOut></PrivateRouter>,
+        element: (
+          <PrivateRouter>
+            <CheckOut></CheckOut>
+          </PrivateRouter>
+        ),
       },
     ],
   },
@@ -63,40 +67,40 @@ const Router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     children: [
       {
-        path: 'adminDashboard',
-        element: <AdminDashboard></AdminDashboard>
+        path: "adminDashboard",
+        element: <AdminDashboard></AdminDashboard>,
       },
       {
-        path: 'users',
-        element: <AllUser></AllUser>
+        path: "users",
+        element: <AllUser></AllUser>,
       },
       {
-        path: 'surveyRequest',
-        element: <AllSurveyRequest></AllSurveyRequest>
+        path: "surveyRequest",
+        element: <AllSurveyRequest></AllSurveyRequest>,
       },
       {
-        path: 'payment',
-        element: <Payment></Payment>
+        path: "payment",
+        element: <Payment></Payment>,
       },
 
       // Surveyor Dashboard
       {
-        path: 'surveyorHome',
-        element: <SurveyorHome></SurveyorHome>
+        path: "surveyorHome",
+        element: <SurveyorHome></SurveyorHome>,
       },
       {
-        path: 'post',
-        element: <PostSurvey></PostSurvey>
+        path: "post",
+        element: <PostSurvey></PostSurvey>,
       },
       {
-        path: 'myPost',
-        element: <MyPost></MyPost>
+        path: "myPost",
+        element: <MyPost></MyPost>,
       },
       {
-        path: 'updateSurvey',
-        element: <UpdateSurvey></UpdateSurvey>
+        path: "updateSurvey",
+        element: <UpdateSurvey></UpdateSurvey>,
       },
-    ]
+    ],
   },
 ]);
 

@@ -8,7 +8,8 @@ import { useEffect, useState } from "react";
 import { Rating } from "@smastrom/react-rating";
 import { FaQuoteRight } from "react-icons/fa";
 import "@smastrom/react-rating/style.css";
-import Container from "../../../Components/Container/Container";
+import Container from "../../../Components/Container";
+
 const Testimonials = () => {
   const axios = useAxios();
 

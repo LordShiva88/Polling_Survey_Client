@@ -7,7 +7,7 @@ import {
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
-import Container from "../../Components/Container/Container";
+import Container from "../../Components/Container";
 import { useForm } from "react-hook-form";
 import HelmetProvider from "../../Components/HelmetProvider";
 import useAuth from "../../Hooks/useAuth";
@@ -128,7 +128,6 @@ const Login = () => {
                 Accept Terms and Conditions
               </label>
             </div>
-
             <button
               type="submit"
               className="btn w-full bg-[#D1A054] hover:bg-[#D2A000]"

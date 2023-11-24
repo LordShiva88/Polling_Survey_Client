@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import Container from "../../Components/Container/Container";
+import Container from "../../Components/Container";
 import HelmetProvider from "../../Components/HelmetProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import SocialLogin from "../Login/SocialLogin";

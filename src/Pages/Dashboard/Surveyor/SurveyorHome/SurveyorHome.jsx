@@ -1,5 +1,3 @@
-
-
 const SurveyorHome = () => {
   return (
     <div>
