@@ -60,8 +60,6 @@ const AuthProvider = ({ children }) => {
       return unSubscribe();
     };
   }, [axios]);
-
-  console.log(loading);
   const authInfo = {
     createUser,
     logIn,

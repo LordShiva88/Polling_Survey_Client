@@ -6,8 +6,10 @@ const CheckOut = () => {
   const { user, loading } = useAuth();
 
   if (loading) {
-    return <p>loading ...........</p>;
+    return 
   }
+
+  console.log(loading)
 
   const facility = [
     " Participate in a survey.",

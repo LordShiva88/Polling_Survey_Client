@@ -17,7 +17,7 @@ import Container from "../Components/Container";
 const Dashboard = () => {
   const user = useAuth();
   const admin = true;
-  const surveyor = false;
+  const surveyor = true;
   const navLink = (
     <>
       {/* Dashboard for admin */}
@@ -169,7 +169,7 @@ const Dashboard = () => {
               </ul>
             </div>
           </div>
-          <div className="hidden md:block w-full lg:px-10 p-2">
+          <div className="hidden md:block w-full">
             <Outlet></Outlet>
           </div>
         </div>
