@@ -97,7 +97,7 @@ const Router = createBrowserRouter([
         element:<PrivateRouter> <MyPost></MyPost></PrivateRouter>,
       },
       {
-        path: "updateSurvey",
+        path: "updateSurvey/:id",
         element: <UpdateSurvey></UpdateSurvey>,
       },
     ],

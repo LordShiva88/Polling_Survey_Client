@@ -35,70 +35,6 @@ const AllSurveyRequest = () => {
   };
 
   return (
-    // <div>
-    //   <h1 className="text-2xl font-bold mb-4">All Survey Requests</h1>
-    //   <div className="overflow-x-auto mt-10">
-    //     <table className="table">
-    //       {/* head */}
-    //       <thead>
-    //         <tr className="bg-base-200">
-    //           <th>#</th>
-    //           <th>Title</th>
-    //           <th>Actions</th>
-    //           <th>Comment</th>
-    //         </tr>
-    //       </thead>
-    //       <tbody>
-    //         {pendingSurveys.length == 0 && <>There Are No your Role add yet</>}
-    //         {pendingSurveys.map((survey, index) => (
-    //           <tr key={survey._id}>
-    //             <th>{index + 1}</th>
-    //             <td>
-    //               <h2 className="font-bold">Title: {survey.title}</h2>
-    //               <h2 className="font-bold">User: {survey.email}</h2>
-    //               <h2 className="font-bold">
-    //                 Date:{" "}
-    //                 {moment(survey.date).format("MMMM Do YYYY, h:mm:ss a")}
-    //               </h2>
-    //             </td>
-    //             <td>
-    //               <button onClick={() => handleSurveyAction(survey._id, 'Approved')} className="bg-blue-500 text-white px-4 py-2 rounded">
-    //                 Publish
-    //               </button>
-    //               <div className="dropdown">
-    //                 <label tabIndex={0} className="m-1">
-    //                   <span className="bg-blue-500 text-white px-4 py-2 rounded">
-    //                     Reject
-    //                   </span>
-    //                 </label>
-    //                 <div
-    //                   tabIndex={0}
-    //                   className="dropdown-content z-[1] p-2 shadow bg-base-100"
-    //                 >
-    //                   <div className="p-5">
-    //                     <textarea
-    //                       className="resize-none  p-4 border-2 border-blue-500 rounded focus:outline-none focus:ring focus:border-blue-300 placeholder-gray-500"
-    //                       placeholder="Enter rejection reason..."
-    //                       name="text"
-    //                       onChange={(e) => setComment(e.target.value)}
-    //                     ></textarea>
-    //                     <button
-    //                       onClick={() => handleSurveyAction(survey._id, 'Rejected')}
-    //                       className="btn btn-sm btn-outline"
-    //                     >
-    //                       Confirm
-    //                     </button>
-    //                   </div>
-    //                 </div>
-    //               </div>
-    //             </td>
-    //             <th>{survey.status}</th>
-    //           </tr>
-    //         ))}
-    //       </tbody>
-    //     </table>
-    //   </div>
-    // </div>
     <div className="max-w-4xl mx-auto mt-8 p-6 bg-white rounded shadow-md">
       <h1 className="text-2xl font-bold mb-4">All Survey Requests</h1>
 
@@ -136,7 +72,7 @@ const AllSurveyRequest = () => {
                   <p className="text-sm text-gray-500">User: {survey.email}</p>
                   <p className="text-sm text-gray-500">
                     Date:{" "}
-                    {moment(survey.date).format("MMMM Do YYYY, h:mm:ss a")}
+                    {moment(survey.date).format("MM-D-YY, h:mm a")}
                   </p>
                 </td>
                 <td className="px-4 py-2 space-x-2">
