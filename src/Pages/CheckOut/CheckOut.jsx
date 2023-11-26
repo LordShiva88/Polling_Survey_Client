@@ -4,13 +4,9 @@ import { TfiEmail } from "react-icons/tfi";
 import useAuth from "../../Hooks/useAuth";
 const CheckOut = () => {
   const { user, loading } = useAuth();
-
   if (loading) {
     return 
   }
-
-  console.log(loading)
-
   const facility = [
     " Participate in a survey.",
     "Like or dislike a survey.",

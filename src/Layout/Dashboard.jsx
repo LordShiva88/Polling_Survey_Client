@@ -6,7 +6,6 @@ import {
   FaHome,
   FaInfo,
   FaMoneyBill,
-  FaPoll,
   FaSurprise,
   FaUsers,
 } from "react-icons/fa";
@@ -89,15 +88,6 @@ const Dashboard = () => {
             >
               <FaClipboardList className="mr-2" />
               My Posted
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/dashboard/allSurvey"
-              className="flex items-center px-4 py-2 "
-            >
-              <FaPoll className="mr-2" />
-              All Survey
             </NavLink>
           </li>
         </>
