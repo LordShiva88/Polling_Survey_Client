@@ -13,6 +13,7 @@ const PostSurvey = () => {
     handleSubmit,
     formState: { errors },
     control,
+    reset,
   } = useForm();
 
   const { fields, append, remove } = useFieldArray({
@@ -31,15 +32,16 @@ const PostSurvey = () => {
       report: 0,
       date: Date.now(),
       email: user?.email,
+      status: "pending",
     };
     axios
       .post("/api/v1/surveys", newSurvey)
       .then((res) => {
-        console.log(res.data);
         if (res.data.insertedId) {
           toast.success(
             "Your Survey Request Successful Waiting for admin confirm"
           );
+          reset();
         }
       })
       .catch((error) => console.error(error));
@@ -85,7 +87,7 @@ const PostSurvey = () => {
               <label className="block text-sm font-medium text-gray-600">
                 Category:
               </label>
-              <select
+              <select 
                 {...register("category", {
                   required: "Category is required",
                 })}
@@ -97,7 +99,7 @@ const PostSurvey = () => {
                 </option>
                 <option value="Technology">Technology</option>
                 <option value="Science">Science</option>
-                <option value="Entertainment">Entertainment</option>
+                <option value="Entertainm ent">Entertainment</option>
                 <option value="Education">Education</option>
                 <option value="Environment">Environment</option>
                 <option value="Programming">Programming</option>

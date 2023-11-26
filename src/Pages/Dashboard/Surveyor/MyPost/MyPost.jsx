@@ -19,11 +19,11 @@ const MyPost = () => {
   }, [axiosSecure, user]);
 
   return (
-    <div className="flex gap-5 px-10 w-full">
+    <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-4">
       {data.map((survey) => (
         <div
           key={survey._id}
-          className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-md"
+          className="mx-auto bg-white rounded-md overflow-hidden shadow-md"
         >
           <div className="p-6">
             <div className="italic text-blue-500 mb-2">
