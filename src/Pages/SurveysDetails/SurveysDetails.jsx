@@ -8,17 +8,71 @@ import Loading from "../../Components/Loading";
 import { useState } from "react";
 import { FaRegHeart, FaHeart } from "react-icons/fa6";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
+import useComments from "../../Hooks/useComments";
+import toast from "react-hot-toast";
+import { useQuery } from "@tanstack/react-query";
+import moment, { months } from "moment/moment";
 
 const SurveysDetails = () => {
+  const { user } = useAuth();
   const [liked, setLiked] = useState(true);
   const [dislike, setDislike] = useState(true);
   const [comment, setComment] = useState("");
   const axiosSecure = useAxiosSecure();
   const id = useParams();
-  const [surveys, isPending, refetch] = useSurvey();
+  const [surveys, surveyPending, fetch] = useSurvey();
+
   const filterSurvey = surveys.filter((survey) => survey._id === id.id);
-  const handleSubmit = (id) => {};
   const getSurvey = filterSurvey[0];
+
+  const {
+    data: comments = [],
+    refetch,
+    isPending,
+  } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/api/v1/surveys/comments`);
+      return res.data;
+    },
+  });
+
+  const filterComments = comments.filter(
+    (comment) => comment.id === getSurvey._id
+  );
+
+  if ((isPending, surveyPending)) {
+    return <Loading></Loading>;
+  }
+
+  const handleFeedback = (id, status) => {
+    const data = {
+      comment,
+      status,
+      userImage: user?.photoURL,
+      userName: user?.displayName,
+      id: id,
+      date: Date.now(),
+    };
+    axiosSecure.post(`/api/v1/surveys/comments`, data).then((res) => {
+      if (res.data.insertedId) {
+        toast.success("Your Survey Changes Successful");
+        fetch();
+      }
+    });
+  };
+
+  const handleVote = (id, status) => {
+    axiosSecure.patch(`/api/v1/surveys/${id}`, { status }).then((res) => {
+      if (res.data.matchedCount > 0) {
+        toast.success("Thank For Your vote");
+        fetch();
+      }
+    });
+  };
+
   if (isPending) {
     return <Loading></Loading>;
   }
@@ -48,46 +102,6 @@ const SurveysDetails = () => {
                 </div>
               </div>
             ))}
-
-            <div className="flex mb-4 gap-10">
-              <button
-                type="button"
-                className="text-green-500 hover:underline"
-                title="Like"
-              >
-                <span className="flex items-center">
-                  {liked ? (
-                    <FaHeart size={24} className="mr-2 text-red-600" />
-                  ) : (
-                    <FaRegHeart size={24} className="mr-2" />
-                  )}
-
-                  <p className="text-xl">Like: {getSurvey.like}</p>
-                </span>
-              </button>
-              <button
-                type="button"
-                className="text-red-500 hover:underline"
-                title="Dislike"
-              >
-                Report
-              </button>
-              <button
-                type="button"
-                className="text-yellow-500 hover:underline"
-                title="Report"
-              >
-                <span className="flex items-center">
-                  {dislike ? (
-                    <AiFillDislike size={24} className="mr-2" />
-                  ) : (
-                    <GrDislike size={24} className="mr-2" />
-                  )}
-                  <p className="text-xl">Dislike: {getSurvey.dislike}</p>
-                </span>
-              </button>
-            </div>
-
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-600">
                 Additional Comments: {"(Only Pro User)"}
@@ -102,31 +116,65 @@ const SurveysDetails = () => {
           </form>
           <button
             className="bg-blue-500 text-white px-4 py-2 rounded w-full hover:bg-blue-600"
-            onClick={() => handleSubmit(getSurvey._id)}
+            onClick={() => handleFeedback(getSurvey._id)}
           >
             Submit
           </button>
+          <div className="flex mb-4 gap-10 mt-5">
+            <button
+              onClick={() => handleVote(getSurvey._id, "like")}
+              className="text-green-500 hover:underline"
+            >
+              <span className="flex items-center">
+                {liked ? (
+                  <FaHeart size={24} className="mr-2 text-red-600" />
+                ) : (
+                  <FaRegHeart size={24} className="mr-2" />
+                )}
+
+                <p className="text-xl">Like: {getSurvey.like}</p>
+              </span>
+            </button>
+            <button
+              onClick={() => handleVote(getSurvey._id, "report")}
+              className="text-red-500 hover:underline"
+            >
+              Report
+            </button>
+            <button
+              onClick={() => handleVote(getSurvey._id, "dislike")}
+              className="text-yellow-500 hover:underline"
+            >
+              <span className="flex items-center">
+                {dislike ? (
+                  <AiFillDislike size={24} className="mr-2" />
+                ) : (
+                  <GrDislike size={24} className="mr-2" />
+                )}
+                <p className="text-xl">Dislike: {getSurvey.dislike}</p>
+              </span>
+            </button>
+          </div>
 
           <div className="mt-8">
             <h3 className="text-2xl font-semibold mb-4">
               Comments for this survey:
             </h3>
             <div className="space-y-4">
-              {/* Comment 1 */}
-              <div className="flex items-center space-x-4">
-                <img
-                  className="w-8 h-8 rounded-full"
-                  src="https://randomuser.me/api/portraits/men/1.jpg"
-                  alt="User Avatar"
-                />
-                <div>
-                  <p className="font-semibold">John Doe</p>
-                  <p className="text-gray-700">
-                    Great experience! Very satisfied.
-                  </p>
+              {filterComments.map((comment) => (
+                <div key={comment._id} className="flex items-center space-x-4">
+                  <img
+                    className="w-8 h-8 rounded-full"
+                    src={comment.user_image}
+                    alt="User Avatar"
+                  />
+                  <div>
+                    <p className="font-semibold">{comment.user_name}</p>
+                    <p className="text-gray-700">{comment.userFeedBack}</p>
+                    <p>{moment(comment.date).startOf("min").fromNow()} </p>
+                  </div>
                 </div>
-              </div>
-              {/* Add more comments as needed */}
+              ))}
             </div>
           </div>
 

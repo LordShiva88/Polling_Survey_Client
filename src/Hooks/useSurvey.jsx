@@ -5,8 +5,8 @@ const useSurvey = () => {
   const axiosSecure = useAxiosSecure();
   const {
     data: surveys = [],
-    isPending,
-    refetch,
+    isPending: surveyPending,
+    refetch: fetch,
   } = useQuery({
     queryKey: ["surveys"],
     queryFn: async () => {
@@ -15,7 +15,7 @@ const useSurvey = () => {
     },
   });
 
-  return [surveys, isPending, refetch];
+  return [surveys, surveyPending, fetch];
 };
 
 export default useSurvey;
