@@ -19,7 +19,6 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
-
   const {
     register,
     handleSubmit,
@@ -35,7 +34,6 @@ const Login = () => {
     if (validateCaptcha(data.captcha)) {
       logIn(data.email, data.password)
         .then((res) => {
-          console.log(res);
           toast.success("Login Successful");
           navigate(from, { replace: true });
         })

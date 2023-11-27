@@ -17,8 +17,8 @@ import Loading from "../Components/Loading";
 
 const Dashboard = () => {
   const user = useAuth();
-  const { userRole, isPending } = useRole();
-  if (isPending) {
+  const { userRole, userRolePending } = useRole();
+  if (userRolePending) {
     return <Loading></Loading>;
   }
   const role = userRole.userRole;

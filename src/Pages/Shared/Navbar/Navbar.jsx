@@ -170,34 +170,34 @@ const Navbar = () => {
                     Register
                   </Link>
                 </li>
-
-                {user && userRole.userRole === "Admin" ? (
-                  <li>
-                    <NavLink
-                      to="/dashboard/adminHome"
-                      className={({ isActive }) =>
-                        isActive
-                          ? "border-0 border-b-4 border-blue-500 rounded-lg p-2"
-                          : "hover:text-blue-500 transition duration-300 border-0 hover:border-b-4 hover:border-blue-500 rounded-lg p-2"
-                      }
-                    >
-                      Dashboard
-                    </NavLink>
-                  </li>
-                ) : (
-                  <li>
-                    <NavLink
-                      to="/dashboard/surveyorHome"
-                      className={({ isActive }) =>
-                        isActive
-                          ? "border-0 border-b-4 border-blue-500 rounded-lg p-2"
-                          : "hover:text-blue-500 transition duration-300 border-0 hover:border-b-4 hover:border-blue-500 rounded-lg p-2"
-                      }
-                    >
-                      Dashboard
-                    </NavLink>
-                  </li>
-                )}
+                {user &&
+                  (userRole.userRole === "Admin" ? (
+                    <li>
+                      <NavLink
+                        to="/dashboard/adminHome"
+                        className={({ isActive }) =>
+                          isActive
+                            ? "border-0 border-b-4 border-blue-500 rounded-lg p-2"
+                            : "hover:text-blue-500 transition duration-300 border-0 hover:border-b-4 hover:border-blue-500 rounded-lg p-2"
+                        }
+                      >
+                        Dashboard
+                      </NavLink>
+                    </li>
+                  ) : (
+                    <li>
+                      <NavLink
+                        to="/dashboard/surveyorHome"
+                        className={({ isActive }) =>
+                          isActive
+                            ? "border-0 border-b-4 border-blue-500 rounded-lg p-2"
+                            : "hover:text-blue-500 transition duration-300 border-0 hover:border-b-4 hover:border-blue-500 rounded-lg p-2"
+                        }
+                      >
+                        Dashboard
+                      </NavLink>
+                    </li>
+                  ))}
               </div>
             )}
           </div>

@@ -5,7 +5,7 @@ import useAxiosSecure from "./useAxiosSecure";
 const useRole = () => {
   const { user, loading } = useAuth();
   const axios = useAxiosSecure();
-  const { data: userRole, isPending } = useQuery({
+  const { data: userRole, isPending : userRolePending } = useQuery({
     queryKey: [user?.email, "isAdmin"],
     enabled: !loading,
     queryFn: async () => {
@@ -13,7 +13,7 @@ const useRole = () => {
       return res.data;
     },
   });
-  return { userRole, isPending };
+  return { userRole, userRolePending };
 };
 
 export default useRole;
