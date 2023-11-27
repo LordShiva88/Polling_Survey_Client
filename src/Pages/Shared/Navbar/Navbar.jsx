@@ -4,10 +4,13 @@ import { FaBars, FaCrown } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import toast from "react-hot-toast";
 import logo from "../../../assets/image/logo.png";
+import useRole from "../../../Hooks/useRole";
+
 const Navbar = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const { user, logOut } = useAuth();
   const [scrolling, setScrolling] = useState(false);
+  const { userRole } = useRole();
 
   const handleScroll = () => {
     if (window.scrollY > 0) {
@@ -47,7 +50,7 @@ const Navbar = () => {
 
   return (
     <div
-      className="lg:px-12 md:px-6 navbar fixed z-10  text-golden font-bold uppercase p-5 opacity bg-white shadow-md"
+      className="lg:px-12 md:px-6 navbar fixed z-10 text-golden font-bold uppercase p-5 opacity bg-white shadow-md"
       style={navbarStyle}
     >
       <div className="container mx-auto flex justify-between">
@@ -168,10 +171,23 @@ const Navbar = () => {
                   </Link>
                 </li>
 
-                {user && (
+                {user && userRole.userRole === "Admin" ? (
                   <li>
                     <NavLink
-                      to="/dashboard"
+                      to="/dashboard/adminHome"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "border-0 border-b-4 border-blue-500 rounded-lg p-2"
+                          : "hover:text-blue-500 transition duration-300 border-0 hover:border-b-4 hover:border-blue-500 rounded-lg p-2"
+                      }
+                    >
+                      Dashboard
+                    </NavLink>
+                  </li>
+                ) : (
+                  <li>
+                    <NavLink
+                      to="/dashboard/surveyorHome"
                       className={({ isActive }) =>
                         isActive
                           ? "border-0 border-b-4 border-blue-500 rounded-lg p-2"

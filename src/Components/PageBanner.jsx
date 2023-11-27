@@ -1,4 +1,3 @@
-
 import banner from "../assets/image/pagebanner.png";
 const PageBanner = () => {
   return (

@@ -1,14 +1,11 @@
 import { useFieldArray, useForm } from "react-hook-form";
 import PageBanner from "../../../../Components/PageBanner";
-import useAuth from "../../../../Hooks/useAuth";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import { AiTwotoneDelete } from "react-icons/ai";
 import useSurvey from "../../../../Hooks/useSurvey";
 import { useNavigate, useParams } from "react-router-dom";
 import Loading from "../../../../Components/Loading";
-import { signInAnonymously } from "firebase/auth";
-
 const UpdateSurvey = () => {
   const [surveys, isPending, refetch] = useSurvey();
   const axios = useAxiosSecure();

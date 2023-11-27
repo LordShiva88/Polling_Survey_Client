@@ -18,6 +18,7 @@ import AllSurveyRequest from "../Pages/Dashboard/Admin/AllSurveyRequest/AllSurve
 import Payment from "../Pages/Dashboard/Admin/Payment/Payment";
 import CheckOut from "../Pages/CheckOut/CheckOut";
 import PrivateRouter from "./PrivateRouter";
+import AdminRouter from "./AdminRouter";
 
 const Router = createBrowserRouter([
   {
@@ -33,7 +34,7 @@ const Router = createBrowserRouter([
         element: <Surveys></Surveys>,
       },
       {
-        path: "/",
+        path: "/surveysDetails/:id",
         element: <SurveysDetails></SurveysDetails>,
       },
       {
@@ -67,20 +68,37 @@ const Router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     children: [
       {
-        path: "adminDashboard",
-        element: <AdminDashboard></AdminDashboard>,
+        path: "adminHome",
+        element: (
+          <AdminRouter>
+            <AdminDashboard></AdminDashboard>
+          </AdminRouter>
+        ),
       },
       {
         path: "users",
-        element: <AllUser></AllUser>,
+        element: (
+          <AdminRouter>
+            <AllUser></AllUser>
+          </AdminRouter>
+        ),
       },
       {
         path: "surveyRequest",
-        element: <AllSurveyRequest></AllSurveyRequest>,
+        element: (
+          <AdminRouter>
+            {" "}
+            <AllSurveyRequest></AllSurveyRequest>
+          </AdminRouter>
+        ),
       },
       {
         path: "payment",
-        element: <Payment></Payment>,
+        element: (
+          <AdminRouter>
+            <Payment></Payment>
+          </AdminRouter>
+        ),
       },
 
       // Surveyor Dashboard
@@ -94,7 +112,12 @@ const Router = createBrowserRouter([
       },
       {
         path: "myPost",
-        element:<PrivateRouter> <MyPost></MyPost></PrivateRouter>,
+        element: (
+          <PrivateRouter>
+            {" "}
+            <MyPost></MyPost>
+          </PrivateRouter>
+        ),
       },
       {
         path: "updateSurvey/:id",

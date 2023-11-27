@@ -4,10 +4,12 @@ import PageBanner from "../../../../Components/PageBanner";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import useAuth from "../../../../Hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const PostSurvey = () => {
   const { user } = useAuth();
   const axios = useAxiosSecure();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -42,6 +44,7 @@ const PostSurvey = () => {
             "Your Survey Request Successful Waiting for admin confirm"
           );
           reset();
+          navigate("/dashboard/myPost");
         }
       })
       .catch((error) => console.error(error));
@@ -87,7 +90,7 @@ const PostSurvey = () => {
               <label className="block text-sm font-medium text-gray-600">
                 Category:
               </label>
-              <select 
+              <select
                 {...register("category", {
                   required: "Category is required",
                 })}
@@ -156,25 +159,6 @@ const PostSurvey = () => {
           </form>
         </div>
       </div>
-
-      <button
-        className="btn"
-        onClick={() => document.getElementById("my_modal_4").showModal()}
-      >
-        open modal
-      </button>
-      <dialog id="my_modal_4" className="modal">
-        <div className="modal-box w-11/12 max-w-5xl">
-          <h3 className="font-bold text-lg">Hello!</h3>
-          <p className="py-4">Click the button below to close</p>
-          <div className="modal-action">
-            <form method="dialog">
-              {/* if there is a button, it will close the modal */}
-              <button className="btn">Close</button>
-            </form>
-          </div>
-        </div>
-      </dialog>
     </div>
   );
 };

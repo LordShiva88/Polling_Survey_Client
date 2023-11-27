@@ -12,19 +12,24 @@ import {
 import logo from "../assets/image/logo.png";
 import useAuth from "../Hooks/useAuth";
 import Container from "../Components/Container";
+import useRole from "../Hooks/useRole";
+import Loading from "../Components/Loading";
 
 const Dashboard = () => {
   const user = useAuth();
-  const admin = true;
-  const surveyor = true;
+  const { userRole, isPending } = useRole();
+  if (isPending) {
+    return <Loading></Loading>;
+  }
+  const role = userRole.userRole;
   const navLink = (
     <>
       {/* Dashboard for admin */}
-      {user && admin && (
+      {user && role === "Admin" && (
         <>
           <li>
             <NavLink
-              to="/dashboard/adminDashboard"
+              to="/dashboard/adminHome"
               className="flex items-center px-4 py-2 "
             >
               <FaHome className="mr-2" />
@@ -61,7 +66,7 @@ const Dashboard = () => {
         </>
       )}
       {/* Dashboard for admin */}
-      {user && surveyor && (
+      {user && role === "Surveyor" && (
         <>
           <li>
             <NavLink

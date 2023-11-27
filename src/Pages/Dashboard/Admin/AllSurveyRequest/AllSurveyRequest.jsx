@@ -71,8 +71,7 @@ const AllSurveyRequest = () => {
                   </h2>
                   <p className="text-sm text-gray-500">User: {survey.email}</p>
                   <p className="text-sm text-gray-500">
-                    Date:{" "}
-                    {moment(survey.date).format("MM-D-YY, h:mm a")}
+                    Date: {moment(survey.date).format("MM-D-YY, h:mm a")}
                   </p>
                 </td>
                 <td className="px-4 py-2 space-x-2">

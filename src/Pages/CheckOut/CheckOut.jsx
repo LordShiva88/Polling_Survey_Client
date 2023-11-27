@@ -5,7 +5,7 @@ import useAuth from "../../Hooks/useAuth";
 const CheckOut = () => {
   const { user, loading } = useAuth();
   if (loading) {
-    return 
+    return;
   }
   const facility = [
     " Participate in a survey.",
