@@ -1,10 +1,10 @@
 import { useForm, useFieldArray } from "react-hook-form";
 import { AiTwotoneDelete } from "react-icons/ai";
-import PageBanner from "../../../../Components/PageBanner";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import useAuth from "../../../../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import Heading from "../../../../Components/Heading";
 
 const PostSurvey = () => {
   const { user } = useAuth();
@@ -50,10 +50,12 @@ const PostSurvey = () => {
       .catch((error) => console.error(error));
   };
   return (
-    <div>
-      <PageBanner></PageBanner>
-      <div className="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
-        <h1 className="text-2xl font-bold mb-4">Post Survey</h1>
+    <div className="">
+      <Heading
+        mainHeading={'Post a Survey'}
+        subHeading={'Share your thoughts and gather feedback'}
+      ></Heading>
+       <div className="bg-white p-6 rounded-md shadow-md">
         <div>
           <h2 className="text-xl font-bold mb-2">Create Survey</h2>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">

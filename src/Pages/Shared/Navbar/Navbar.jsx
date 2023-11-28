@@ -11,7 +11,6 @@ const Navbar = () => {
   const { user, logOut } = useAuth();
   const [scrolling, setScrolling] = useState(false);
   const { userRole } = useRole();
-  console.log(userRole, user?.email);
 
   const handleScroll = () => {
     if (window.scrollY > 0) {
@@ -21,7 +20,6 @@ const Navbar = () => {
     }
   };
 
-  // https://i.ibb.co/DMJ8ZRc/user.png
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -46,8 +44,8 @@ const Navbar = () => {
   const navLinks = [
     { to: "/", text: "Home" },
     { to: "/surveys", text: "Surveys" },
-    { to: "/menu", text: "Menu" },
-    { to: "/order/salad", text: "Order" },
+    { to: "/About", text: "About Us" },
+    { to: "/contact", text: "Contact" },
   ];
 
   return (
@@ -126,7 +124,10 @@ const Navbar = () => {
                     </div>
                   </div>
                 ) : (
-                  <img src='https://i.ibb.co/DMJ8ZRc/user.png'alt="Default Avatar" />
+                  <img
+                    src="https://i.ibb.co/DMJ8ZRc/user.png"
+                    alt="Default Avatar"
+                  />
                 )}
               </div>
             </label>
@@ -142,7 +143,10 @@ const Navbar = () => {
                         className="w-20 rounded-full border"
                       />
                     ) : (
-                      <img src="https://i.ibb.co/DMJ8ZRc/user.png" alt="Default Avatar" />
+                      <img
+                        src="https://i.ibb.co/DMJ8ZRc/user.png"
+                        alt="Default Avatar"
+                      />
                     )}
                   </div>
                   <p>{user?.displayName}</p>

@@ -1,4 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
+
 import {
   FaBars,
   FaClipboardList,
@@ -71,7 +72,7 @@ const Dashboard = () => {
           <li>
             <NavLink
               to="/dashboard/surveyorHome"
-              className="flex items-center px-4 py-2 "
+              className="flex items-center px-4 py-2"
             >
               <FaHome className="mr-2" />
               Home
@@ -83,7 +84,7 @@ const Dashboard = () => {
               className="flex items-center px-4 py-2 "
             >
               <FaUsers className="mr-2" />
-              Post A Survey
+              Track My Survey
             </NavLink>
           </li>
           <li>
@@ -153,18 +154,31 @@ const Dashboard = () => {
               aria-label="close sidebar"
               className="drawer-overlay"
             ></label>
-            <ul className="menu p-4  min-h-full bg-base-200">{navLink}</ul>
+            <ul className="menu bg-gray-500 h-screen fixed z-10 px-5 text-white space-y-3">
+              <div className="flex items-center gap-2">
+                  <img src={logo} alt="" className="w-10" />
+                  <p className="text-xl font-bold text-red-400">Survey Sift</p>
+                </div>
+              {navLink}
+              </ul>
           </div>
         </div>
         <div className="flex">
-          <div className="hidden md:block w-[200px]">
+          <div className="hidden md:block ">
             <div>
-              <ul tabIndex={0} className="menu p-4 bg-base-200 h-screen">
+              <ul
+                tabIndex={0}
+                className="menu bg-gray-500 h-screen fixed z-10 px-5 text-white space-y-3"
+              >
+                <div className="flex items-center gap-2">
+                  <img src={logo} alt="" className="w-10" />
+                  <p className="text-xl font-bold text-red-400">Survey Sift</p>
+                </div>
                 {navLink}
               </ul>
             </div>
           </div>
-          <div className="hidden md:block w-full">
+          <div className="hidden md:block md:pl-52">
             <Outlet></Outlet>
           </div>
         </div>

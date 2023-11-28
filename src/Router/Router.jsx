@@ -10,7 +10,6 @@ import ContactUs from "../Pages/ContactUs/ContactUs";
 import AdminDashboard from "../Pages/Dashboard/Admin/AdminDashboard/AdminDashboard";
 import Home from "../Pages/Home/Home/Home";
 import SurveyorHome from "../Pages/Dashboard/Surveyor/SurveyorHome/SurveyorHome";
-import PostSurvey from "../Pages/Dashboard/Surveyor/PostSurvey/PostSurvey";
 import MyPost from "../Pages/Dashboard/Surveyor/MyPost/MyPost";
 import UpdateSurvey from "../Pages/Dashboard/Surveyor/UpdateSurvey/UpdateSurvey";
 import AllUser from "../Pages/Dashboard/Admin/AllUser/AllUser";
@@ -19,6 +18,7 @@ import Payment from "../Pages/Dashboard/Admin/Payment/Payment";
 import CheckOut from "../Pages/CheckOut/CheckOut";
 import PrivateRouter from "./PrivateRouter";
 import AdminRouter from "./AdminRouter";
+import TrackSurvey from "../Pages/Dashboard/Surveyor/TrackSurvey/TrackSurvey";
 
 const Router = createBrowserRouter([
   {
@@ -108,13 +108,12 @@ const Router = createBrowserRouter([
       },
       {
         path: "post",
-        element: <PostSurvey></PostSurvey>,
+        element: <TrackSurvey></TrackSurvey>,
       },
       {
         path: "myPost",
         element: (
           <PrivateRouter>
-            {" "}
             <MyPost></MyPost>
           </PrivateRouter>
         ),
