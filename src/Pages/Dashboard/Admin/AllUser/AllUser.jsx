@@ -69,100 +69,103 @@ const AllUser = () => {
   };
 
   return (
-    <div className="">
-      <div className="">
-        {/* <HeadingTitle
-          mainTitle={"All Users"}
-          subTitle={"---My Cart---"}
-        ></HeadingTitle> */}
-        <div className="px-8">
-          <div className="flex items-center justify-between">
-            <h2 className="text-3xl font-semibold mr-4">
-              Total User: {users.length}
-            </h2>
-            <div className="flex items-center">
-              <label htmlFor="roleFilter" className="mr-2">
-                Filter by Role:
-              </label>
-              <select
-                id="roleFilter"
-                onChange={(e) => setRoleFilter(e.target.value)}
-                className="p-2 border border-gray-300 rounded-md"
-              >
-                <option value="all">All</option>
-                <option value="user">Normal User</option>
-                <option value="Admin">Admin</option>
-                <option value="Pro User">Pro User</option>
-                <option value="Surveyor">Surveyor</option>
-              </select>
-            </div>
+    <div className="container mx-auto h-screen overflow-auto">
+      <div className="px-8 mt-8">
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-3xl font-semibold">
+            Total Users: {users.length}
+          </h2>
+          <div className="flex items-center">
+            <label htmlFor="roleFilter" className="mr-2">
+              Filter by Role:
+            </label>
+            <select
+              id="roleFilter"
+              onChange={(e) => setRoleFilter(e.target.value)}
+              className="p-2 border border-gray-300 rounded-md"
+            >
+              <option value="all">All</option>
+              <option value="user">Normal User</option>
+              <option value="Admin">Admin</option>
+              <option value="Pro User">Pro User</option>
+              <option value="Surveyor">Surveyor</option>
+            </select>
           </div>
         </div>
-        <div className="overflow-x-auto mt-10">
-          <table className="table">
+        <div className="overflow-x-auto">
+          <table className="min-w-full border bg-white">
             {/* head */}
             <thead>
-              <tr className="bg-base-200">
-                <th>#</th>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Role</th>
-                <th>Delete</th>
+              <tr className="bg-primary text-white">
+                <th className="py-2 px-4">#</th>
+                <th className="py-2 px-4">Image</th>
+                <th className="py-2 px-4">Name</th>
+                <th className="py-2 px-4">Role</th>
+                <th className="py-2 px-4">Delete</th>
               </tr>
             </thead>
             <tbody>
-              {users.length == 0 && <>There Are No your Role add yet</>}
+              {users.length === 0 && (
+                <tr>
+                  <td colSpan="5" className="py-4 px-4 text-center">
+                    There are no users for the selected role.
+                  </td>
+                </tr>
+              )}
               {users.map((user, index) => (
                 <tr key={user._id}>
-                  <th>{index + 1}</th>
-                  <td>
-                    <div className="avatar">
-                      <div className="mask mask-squircle w-12 h-12">
-                        <img src={user.image} />
+                  <td className="py-2 px-4">{index + 1}</td>
+                  <td className="py-2 px-4">
+                    <div className="w-12 h-12 overflow-hidden">
+                      <img
+                        src={user.image}
+                        alt={user.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </td>
+                  <td className="py-2 px-4">
+                    <h2 className="font-bold">{user.name}</h2>
+                    <p className="text-gray-500">{user.email}</p>
+                  </td>
+                  <td className="py-2 px-4">
+                    <div className="flex items-center space-x-2">
+                      <label className="label">
+                        <span className="label-text">Change User Role</span>
+                      </label>
+                      <div className="dropdown">
+                        <label tabIndex={0} className="btn m-1">
+                          <span className="flex items-center">
+                            {user?.role} <FaAngleDown />
+                          </span>
+                        </label>
+                        <ul className="dropdown-content z-10 menu p-2 shadow bg-white rounded-box w-32">
+                          <li>
+                            <button
+                              onClick={() => handleRole(user._id, "Surveyor")}
+                            >
+                              Surveyor
+                            </button>
+                          </li>
+                          <li>
+                            <button
+                              onClick={() => handleRole(user._id, "Admin")}
+                            >
+                              Admin
+                            </button>
+                          </li>
+                        </ul>
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <h2 className="font-bold">{user.name}</h2>
-                    <h2 className="font-bold">{user.email}</h2>
-                  </td>
-                  <td>
-                    <label className="label">
-                      <span className="label-text">Change User role</span>
-                    </label>
-                    <div className="dropdown">
-                      <label tabIndex={0} className="btn m-1">
-                        <span className="flex">
-                          {user?.role} <FaAngleDown></FaAngleDown>
-                        </span>
-                      </label>
-                      <ul
-                        tabIndex={0}
-                        className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-                      >
-                        <li>
-                          <button
-                            onClick={() => handleRole(user._id, "Surveyor")}
-                          >
-                            Surveyor
-                          </button>
-                        </li>
-                        <li>
-                          <button onClick={() => handleRole(user._id, "Admin")}>
-                            Admin
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
-                  </td>
-                  <th>
+                  <td className="py-2 px-4">
                     <button
                       onClick={() => handleDelete(user._id)}
                       className="btn btn-ghost"
                     >
-                      <AiOutlineDelete className="text-2xl text-red-500"></AiOutlineDelete>
+                      <AiOutlineDelete className="text-2xl text-red-500" />
                     </button>
-                  </th>
+                  </td>
                 </tr>
               ))}
             </tbody>
