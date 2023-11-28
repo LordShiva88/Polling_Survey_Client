@@ -9,6 +9,7 @@ import { Rating } from "@smastrom/react-rating";
 import { FaQuoteRight } from "react-icons/fa";
 import "@smastrom/react-rating/style.css";
 import Container from "../../../Components/Container";
+import Heading from "../../../Components/Heading";
 
 const Testimonials = () => {
   const axios = useAxios();
@@ -25,11 +26,15 @@ const Testimonials = () => {
 
   return (
     <Container>
+      <Heading
+        mainHeading="What Our Users Say"
+        subHeading="See what our users have to say about their experience. Join the community!"
+      ></Heading>
       <div className="">
         <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
           {reviews.map((review) => (
             <SwiperSlide key={review._id}>
-              <div className="flex flex-col items-center md:mx-4 my-8 lg:mx-24 lg:my-16 shadow-sm md:p-10 px-10 p-2">
+              <div className="flex flex-col items-center md:mx-4  shadow-sm md:p-10 px-10 p-2">
                 <div
                   className="text-center max-w-xl space-y-4"
                   key={review._id}
