@@ -30,12 +30,13 @@ const Login = () => {
   }, []);
 
   const onSubmit = (data) => {
-    console.log(data.email, data.password, data.captcha);
     if (validateCaptcha(data.captcha)) {
       logIn(data.email, data.password)
         .then((res) => {
-          toast.success("Login Successful");
-          navigate(from, { replace: true });
+          if (res.data) {
+            toast.success("Login Successful");
+            navigate(from, { replace: true });
+          }
         })
         .catch((error) => toast.error(error.message));
     } else {

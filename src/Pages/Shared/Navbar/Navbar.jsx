@@ -11,6 +11,7 @@ const Navbar = () => {
   const { user, logOut } = useAuth();
   const [scrolling, setScrolling] = useState(false);
   const { userRole } = useRole();
+  console.log(userRole, user?.email);
 
   const handleScroll = () => {
     if (window.scrollY > 0) {
@@ -20,6 +21,7 @@ const Navbar = () => {
     }
   };
 
+  // https://i.ibb.co/DMJ8ZRc/user.png
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -124,7 +126,7 @@ const Navbar = () => {
                     </div>
                   </div>
                 ) : (
-                  <img src="img" alt="Default Avatar" />
+                  <img src='https://i.ibb.co/DMJ8ZRc/user.png'alt="Default Avatar" />
                 )}
               </div>
             </label>
@@ -140,7 +142,7 @@ const Navbar = () => {
                         className="w-20 rounded-full border"
                       />
                     ) : (
-                      <img src="img" alt="Default Avatar" />
+                      <img src="https://i.ibb.co/DMJ8ZRc/user.png" alt="Default Avatar" />
                     )}
                   </div>
                   <p>{user?.displayName}</p>
@@ -185,18 +187,20 @@ const Navbar = () => {
                       </NavLink>
                     </li>
                   ) : (
-                    <li>
-                      <NavLink
-                        to="/dashboard/surveyorHome"
-                        className={({ isActive }) =>
-                          isActive
-                            ? "border-0 border-b-4 border-blue-500 rounded-lg p-2"
-                            : "hover:text-blue-500 transition duration-300 border-0 hover:border-b-4 hover:border-blue-500 rounded-lg p-2"
-                        }
-                      >
-                        Dashboard
-                      </NavLink>
-                    </li>
+                    userRole.userRole === "Surveyor" && (
+                      <li>
+                        <NavLink
+                          to="/dashboard/surveyorHome"
+                          className={({ isActive }) =>
+                            isActive
+                              ? "border-0 border-b-4 border-blue-500 rounded-lg p-2"
+                              : "hover:text-blue-500 transition duration-300 border-0 hover:border-b-4 hover:border-blue-500 rounded-lg p-2"
+                          }
+                        >
+                          Dashboard
+                        </NavLink>
+                      </li>
+                    )
                   ))}
               </div>
             )}

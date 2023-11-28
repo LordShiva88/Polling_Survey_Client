@@ -60,19 +60,21 @@ const SurveysDetails = () => {
     if (!user) {
       return navigate("/login");
     }
+    if (user?.email === getSurvey.email) {
+      return;
+    }
 
     const data = {
       status: status,
       participantEmail: user?.email,
     };
-    axiosSecure.patch(`/api/v1/surveys/${getSurvey?._id}`, data)
-    .then((res) => {
+    axiosSecure.patch(`/api/v1/surveys/${getSurvey?._id}`, data).then((res) => {
       if (res.data.matchedCount > 0) {
         toast.success("Thank For Your vote");
         setLiked(true);
         fetch();
       }
-    })
+    });
   };
 
   if (isPending && surveyPending && userRolePending) {
@@ -175,11 +177,18 @@ const SurveysDetails = () => {
             <div className="space-y-4">
               {filterComments.map((comment) => (
                 <div key={comment._id} className="flex items-center space-x-4">
-                  <img
-                    className="w-8 h-8 rounded-full"
-                    src={comment.user_image}
-                    alt="User Avatar"
-                  />
+                  {user?.photoURL ? (
+                    <div className="avatar">
+                      <div className="rounded-full ring ring-primary ring-offset-blue-100 ">
+                        <img src={user?.photoURL} />
+                      </div>
+                    </div>
+                  ) : (
+                    <img
+                      src="https://i.ibb.co/DMJ8ZRc/user.png"
+                      alt="Default Avatar"
+                    />
+                  )}
                   <div>
                     <p className="font-semibold text-gray-700">
                       {comment.user_name}
