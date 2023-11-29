@@ -4,6 +4,7 @@ import moment from "moment/moment";
 import { useState } from "react";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import Modal from "../../../../Components/Modal";
 
 const AllSurveyRequest = () => {
   const [surveys, isPending, refetch] = useSurvey();
@@ -37,7 +38,6 @@ const AllSurveyRequest = () => {
   return (
     <div className="max-w-4xl mx-auto mt-8 p-6 bg-white rounded shadow-md">
       <h1 className="text-2xl font-bold mb-4">All Survey Requests</h1>
-
       <div className="overflow-x-auto">
         <table className="w-full table-auto ">
           {/* Table Head */}
@@ -74,41 +74,31 @@ const AllSurveyRequest = () => {
                     Date: {moment(survey.date).format("MM-D-YY, h:mm a")}
                   </p>
                 </td>
-                <td className="px-4 py-2 space-x-2">
+                <td className="flex gap-3">
                   <button
                     onClick={() => handleSurveyAction(survey._id, "Approved")}
                     className="bg-blue-500 text-white px-4 py-2 rounded"
                   >
                     Publish
                   </button>
-                  <div className="dropdown">
-                    <label tabIndex={0} className="m-1">
-                      <span className="bg-blue-500 text-white px-4 py-2 rounded">
-                        Reject
-                      </span>
-                    </label>
-                    <div
-                      tabIndex={0}
-                      className="dropdown-content z-[1] p-2 shadow bg-base-100"
-                    >
-                      <div className="p-5">
-                        <textarea
-                          className="resize-none  p-4 border-2 border-blue-500 rounded focus:outline-none focus:ring focus:border-blue-300 placeholder-gray-500"
-                          placeholder="Enter rejection reason..."
-                          name="text"
-                          onChange={(e) => setComment(e.target.value)}
-                        ></textarea>
-                        <button
-                          onClick={() =>
-                            handleSurveyAction(survey._id, "Rejected")
-                          }
-                          className="btn btn-sm btn-outline"
-                        >
-                          Confirm
-                        </button>
-                      </div>
+                  <Modal butname={"Reject"}>
+                    <div className="p-5 border flex  flex-col gap-5">
+                      <textarea
+                        className="resize-none  p-4 border-2 border-blue-500 rounded focus:outline-none focus:ring focus:border-blue-300 placeholder-gray-500"
+                        placeholder="Enter rejection reason..."
+                        name="text"
+                        onChange={(e) => setComment(e.target.value)}
+                      ></textarea>
+                      <button
+                        onClick={() =>
+                          handleSurveyAction(survey._id, "Rejected")
+                        }
+                        className="btn btn-sm btn-outline"
+                      >
+                        Confirm
+                      </button>
                     </div>
-                  </div>
+                  </Modal>
                 </td>
                 <td className="px-4 py-2">{survey.status}</td>
               </tr>

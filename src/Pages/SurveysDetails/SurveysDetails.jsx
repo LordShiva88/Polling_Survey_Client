@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { FaRegHeart, FaHeart, FaChevronDown } from "react-icons/fa6";
+import { FaRegHeart, FaHeart, FaChevronDown, FaCrown } from "react-icons/fa6";
 import { GrDislike } from "react-icons/gr";
-import { useNavigate, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import moment from "moment/moment";
 import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
@@ -18,11 +18,11 @@ const SurveysDetails = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const { id } = useParams();
-  const [liked, setLiked] = useState(true);
+  const [liked, setLiked] = useState(false);
   const [comment, setComment] = useState("");
   const [surveys, surveyPending, fetch] = useSurvey();
   const navigate = useNavigate();
-
+  
   const getSurvey = surveys.find((survey) => survey._id === id);
   const {
     data: comments = [],
@@ -63,7 +63,6 @@ const SurveysDetails = () => {
     if (user?.email === getSurvey.email) {
       return;
     }
-
     const data = {
       status: status,
       participantEmail: user?.email,
@@ -81,7 +80,7 @@ const SurveysDetails = () => {
     return <Loading />;
   }
 
-  const isProUser = userRole?.userRole === "Pro";
+  const isProUser = userRole?.userRole === "Pro User";
 
   return (
     <div className="p-8 bg-gradient-to-b from-blue-500 via-blue-300 to-white text-white min-h-screen">
@@ -130,17 +129,25 @@ const SurveysDetails = () => {
                 rows="3"
                 placeholder="Enter your comments here"
                 onChange={(e) => setComment(e.target.value)}
+                disabled={!isProUser}
               ></textarea>
             </div>
           </form>
           <div className="">
-            <button
+            {
+              isProUser ? <button
               className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-96"
               onClick={handleFeedback}
               disabled={!isProUser}
             >
               Submit
-            </button>
+            </button> : <NavLink
+            to={"/checkout"}
+            className="btn w-96 flex items-center space-x-2 btn-outline btn-info"
+          >
+            <FaCrown />Get Pro Badge
+          </NavLink>
+            }
           </div>
           <div className="flex mt-4 space-x-4">
             <button
@@ -177,10 +184,10 @@ const SurveysDetails = () => {
             <div className="space-y-4">
               {filterComments.map((comment) => (
                 <div key={comment._id} className="flex items-center space-x-4">
-                  {user?.photoURL ? (
-                    <div className="avatar">
-                      <div className="rounded-full ring ring-primary ring-offset-blue-100 ">
-                        <img src={user?.photoURL} />
+                  {comment.user_image ? (
+                    <div className="ml-5 avatar">
+                      <div className="rounded-full ring ring-primary ring-offset-blue-100  w-10 h-10">
+                        <img src={comment.user_image} />
                       </div>
                     </div>
                   ) : (

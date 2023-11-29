@@ -53,7 +53,7 @@ const Surveys = () => {
           </div>
           <div className="lg:flex justify-end gap-10 items-center space-y-5">
             {/* Search bar */}
-            <div className="relative flex">
+            {/* <div className="relative flex">
               <input
                 onChange={(e) => setTitle(e.target.value)}
                 type="search"
@@ -69,10 +69,46 @@ const Surveys = () => {
               >
                 <BsSearch className="h-5 w-5" />
               </button>
+            </div> */}
+
+            <div className="items-center py-2 pl-4 bg-gray-200 rounded-lg dark:text-gray-300 dark:bg-gray-600 lg:flex">
+              <BsSearch className="h-5 w-5" />
+              <input
+                type="text"
+                className="relative rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary w-full"
+                placeholder="Search..."
+              />
+              <div className="px-6 py-2.5 w-full  border rounded-md">
+                <select
+                  onChange={(e) => setOrder(e.target.value)}
+                  className="p-2 border border-gray-300 rounded-md"
+                >
+                  <option value="all">All</option>
+                  <option value="Descending">Descending</option>
+                  <option value="Ascending">Ascending</option>
+                </select>
+              </div>
+              <select
+                onChange={(e) => setCategory(e.target.value)}
+                defaultValue=""
+                className="px-6 py-2.5 w-full lg:w-1/4 border rounded-md"
+              >
+                <option value="">All</option>
+                <option value="Technology">Technology</option>
+                <option value="Science">Science</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Education">Education</option>
+                <option value="Environment">Environment</option>
+                <option value="Programming">Programming</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Mobile Development">Mobile Development</option>
+                <option value="Data Science">Data Science</option>
+                <option value="Cybersecurity">Cyber Security</option>
+              </select>
             </div>
 
             {/* Category dropdown */}
-            <select
+            {/* <select
               onChange={(e) => setCategory(e.target.value)}
               defaultValue=""
               className="px-6 py-2.5 w-full lg:w-1/4 border rounded-md"
@@ -88,10 +124,10 @@ const Surveys = () => {
               <option value="Mobile Development">Mobile Development</option>
               <option value="Data Science">Data Science</option>
               <option value="Cybersecurity">Cyber Security</option>
-            </select>
+            </select> */}
 
             {/* Order by dropdown */}
-            <div className="flex items-center">
+            {/* <div className="flex items-center">
               <label htmlFor="roleFilter" className="mr-2">
                 Filter Vote
               </label>
@@ -103,7 +139,7 @@ const Surveys = () => {
                 <option value="Descending">Descending</option>
                 <option value="Ascending">Ascending</option>
               </select>
-            </div>
+            </div> */}
           </div>
         </div>
 

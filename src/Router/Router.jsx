@@ -14,16 +14,20 @@ import MyPost from "../Pages/Dashboard/Surveyor/MyPost/MyPost";
 import UpdateSurvey from "../Pages/Dashboard/Surveyor/UpdateSurvey/UpdateSurvey";
 import AllUser from "../Pages/Dashboard/Admin/AllUser/AllUser";
 import AllSurveyRequest from "../Pages/Dashboard/Admin/AllSurveyRequest/AllSurveyRequest";
-import Payment from "../Pages/Dashboard/Admin/Payment/Payment";
+// import Payment from "../Pages/Dashboard/Admin/Payment/Payment";
 import CheckOut from "../Pages/CheckOut/CheckOut";
 import PrivateRouter from "./PrivateRouter";
 import AdminRouter from "./AdminRouter";
 import TrackSurvey from "../Pages/Dashboard/Surveyor/TrackSurvey/TrackSurvey";
+import Error from "../Pages/Error/Error";
+import Payment from "../Pages/CheckOut/Payment";
+
 
 const Router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
@@ -52,6 +56,10 @@ const Router = createBrowserRouter([
             <CheckOut></CheckOut>
           </PrivateRouter>
         ),
+      },
+      {
+        path: "/check",
+        element: <Payment></Payment>,
       },
     ],
   },
