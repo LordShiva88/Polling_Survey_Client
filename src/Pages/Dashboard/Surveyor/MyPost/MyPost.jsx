@@ -65,8 +65,8 @@ const MyPost = () => {
         <PostSurvey></PostSurvey>
       </div>
       <Heading
-        mainHeading={'All Survey'}
-        subHeading={'Here is your all survey you can edit and delete!!'}
+        mainHeading={"All Survey"}
+        subHeading={"Here is your all survey you can edit and delete!!"}
       ></Heading>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-4">
         {surveys.map((survey) => (

@@ -14,22 +14,28 @@ import toast from "react-hot-toast";
 import Heading from "../../Components/Heading";
 
 const Login = () => {
+  // State for toggling password visibility
   const [showPassword, setShowPassword] = useState(false);
+
+  // Authentication-related hooks and utilities
   const { logIn } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
-  console.log(from);
+
+  // React Hook Form for form validation and submission
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  // Initialize captcha engine
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
 
+  // Form submission handler
   const onSubmit = (data) => {
     if (validateCaptcha(data.captcha)) {
       logIn(data.email, data.password)
@@ -58,14 +64,18 @@ const Login = () => {
         <HelmetProvider
           helmetTitle={"Polling Survey || Login"}
         ></HelmetProvider>
+
         <Heading mainHeading={"Login Now"}></Heading>
+
         <div className="flex justify-between gap-10">
+          {/* Login form */}
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className=" flex-1 space-y-4 shadow-lg p-10  bg-opacity-75 backdrop-blur-md rounded-md text-white md:max-w-xl"
+            className="flex-1 space-y-4 shadow-lg p-10  bg-opacity-75 backdrop-blur-md rounded-md text-white md:max-w-xl"
           >
+            {/* Email input */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium ">
+              <label htmlFor="email" className="block text-sm font-medium">
                 Email Address
               </label>
               <input
@@ -78,8 +88,9 @@ const Login = () => {
               )}
             </div>
 
+            {/* Password input */}
             <div className="relative">
-              <label htmlFor="password" className="block text-sm font-medium ">
+              <label htmlFor="password" className="block text-sm font-medium">
                 Password
               </label>
               <input
@@ -99,6 +110,7 @@ const Login = () => {
               </span>
             </div>
 
+            {/* Captcha input */}
             <div className="relative">
               <LoadCanvasTemplate />
               <input
@@ -108,6 +120,7 @@ const Login = () => {
               />
             </div>
 
+            {/* Terms and conditions checkbox */}
             <div className="flex items-center">
               <input
                 type="checkbox"
@@ -115,7 +128,7 @@ const Login = () => {
                 name="acceptTerms"
                 className="mr-2"
               />
-              <label htmlFor="acceptTerms" className="text-sm ">
+              <label htmlFor="acceptTerms" className="text-sm">
                 Accept Terms and Conditions
               </label>
             </div>

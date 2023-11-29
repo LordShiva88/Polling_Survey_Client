@@ -14,6 +14,7 @@ const AboutUs = () => {
           "Welcome to our survey application, where we believe in making outstanding design accessible and enjoyable for everyone."
         }
       ></Heading>
+
       <div className="2xl:container 2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4">
         <p className="font-normal text-sm leading-3 text-indigo-700 hover:text-indigo-800 cursor-pointer pb-2">
           About
@@ -85,8 +86,8 @@ const AboutUs = () => {
               </p>
               <p className="font-normal text-base leading-6 text-gray-600 mt-6">
                 With 50 million monthly enrichments and a community of 400,000
-                users, we&#39;re proud to be at the forefront of survey innovation,
-                continuously shaping the future of the industry.
+                users, we&#39;re proud to be at the forefront of survey
+                innovation, continuously shaping the future of the industry.
               </p>
             </div>
             <div className="sm:block hidden">

@@ -1,13 +1,12 @@
+import React, { useEffect, useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa6";
-import { BsSearch } from "react-icons/bs";
-import HelmetProvider from "../../Components/HelmetProvider";
 import { GrDislike } from "react-icons/gr";
 import { MdReport } from "react-icons/md";
-import Container from "../../Components/Container";
+import { BiCommentDetail } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import useAxios from "../../Hooks/useAxios";
-import { useEffect, useState } from "react";
-import { BiCommentDetail } from "react-icons/bi";
+import HelmetProvider from "../../Components/HelmetProvider";
+import Container from "../../Components/Container";
 import Nodata from "../../Components/Nodata";
 import Loading from "../../Components/Loading";
 import Heading from "../../Components/Heading";
@@ -39,80 +38,37 @@ const Surveys = () => {
   if (loading) {
     return <Loading></Loading>;
   }
+
   return (
     <div className="">
       <HelmetProvider helmetTitle={"SurveySift || Surveys"} />
       <PageBanner></PageBanner>
       <Container>
-        <div className="flex items-center justify-between">
-          <div>
+        {/* Search and filter options section */}
+        <div className="flex justify-between gap-5 md:flex-row flex-col items-center">
+          <div className="flex-1">
             <Heading
               mainHeading="How SurveySift Works"
               subHeading="Explore the simplicity and effectiveness of SurveySift. Your feedback, your way."
             />
           </div>
-          <div className="lg:flex justify-end gap-10 items-center space-y-5">
-            {/* Search bar */}
-            {/* <div className="relative flex">
+          <div className="flex gap-5 mb-10 lg:mb-0">
+            <div className="relative px-6 py-2.5 w-full border border-black rounded-md">
               <input
                 onChange={(e) => setTitle(e.target.value)}
-                type="search"
-                className="relative rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary w-full"
-                placeholder="Search by title"
-              />
-              <button
-                className="relative z-[2] rounded-r bg-primary px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white transition duration-150 hover:bg-primary-700 hover:shadow-lg"
-                type="button"
-                id="button-addon1"
-                data-te-ripple-init
-                data-te-ripple-color="light"
-              >
-                <BsSearch className="h-5 w-5" />
-              </button>
-            </div> */}
-
-            <div className="items-center py-2 pl-4 bg-gray-200 rounded-lg dark:text-gray-300 dark:bg-gray-600 lg:flex">
-              <BsSearch className="h-5 w-5" />
-              <input
                 type="text"
-                className="relative rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary w-full"
-                placeholder="Search..."
+                className="outline-none "
+                placeholder="Search By Title ...."
               />
-              <div className="px-6 py-2.5 w-full  border rounded-md">
-                <select
-                  onChange={(e) => setOrder(e.target.value)}
-                  className="p-2 border border-gray-300 rounded-md"
-                >
-                  <option value="all">All</option>
-                  <option value="Descending">Descending</option>
-                  <option value="Ascending">Ascending</option>
-                </select>
-              </div>
-              <select
-                onChange={(e) => setCategory(e.target.value)}
-                defaultValue=""
-                className="px-6 py-2.5 w-full lg:w-1/4 border rounded-md"
-              >
-                <option value="">All</option>
-                <option value="Technology">Technology</option>
-                <option value="Science">Science</option>
-                <option value="Entertainment">Entertainment</option>
-                <option value="Education">Education</option>
-                <option value="Environment">Environment</option>
-                <option value="Programming">Programming</option>
-                <option value="Web Development">Web Development</option>
-                <option value="Mobile Development">Mobile Development</option>
-                <option value="Data Science">Data Science</option>
-                <option value="Cybersecurity">Cyber Security</option>
-              </select>
             </div>
-
-            {/* Category dropdown */}
-            {/* <select
+            <select
               onChange={(e) => setCategory(e.target.value)}
               defaultValue=""
-              className="px-6 py-2.5 w-full lg:w-1/4 border rounded-md"
+              className="px-6 py-2.5 w-full border rounded-md border-black "
             >
+              <option value="" disabled>
+                Select Category
+              </option>
               <option value="">All</option>
               <option value="Technology">Technology</option>
               <option value="Science">Science</option>
@@ -124,22 +80,17 @@ const Surveys = () => {
               <option value="Mobile Development">Mobile Development</option>
               <option value="Data Science">Data Science</option>
               <option value="Cybersecurity">Cyber Security</option>
-            </select> */}
-
-            {/* Order by dropdown */}
-            {/* <div className="flex items-center">
-              <label htmlFor="roleFilter" className="mr-2">
-                Filter Vote
-              </label>
-              <select
-                onChange={(e) => setOrder(e.target.value)}
-                className="p-2 border border-gray-300 rounded-md"
-              >
-                <option value="all">All</option>
-                <option value="Descending">Descending</option>
-                <option value="Ascending">Ascending</option>
-              </select>
-            </div> */}
+            </select>
+            <select
+              onChange={(e) => setOrder(e.target.value)}
+              className="px-6 py-2.5 w-full border rounded-md border-black "
+            >
+              <option value="" disabled>
+                Select a category
+              </option>
+              <option value="Descending">Descending</option>
+              <option value="Ascending">Ascending</option>
+            </select>
           </div>
         </div>
 
@@ -164,6 +115,7 @@ const Surveys = () => {
                   <p className="text-gray-700 mb-4">
                     {survey.description.slice(0, 100)} ......
                   </p>
+
                   <div className="flex justify-between items-center text-sm text-gray-500">
                     <div className="flex items-center gap-4">
                       <div className="flex items-center text-green-500 gap-2">
@@ -186,6 +138,7 @@ const Surveys = () => {
                     </div>
                   </div>
 
+                  {/* Link to survey details page */}
                   <Link
                     to={`/surveysDetails/${survey._id}`}
                     className="btn btn-outline btn-sm mt-5 w-32 hover:bg-primary-700 hover:text-white transition duration-300 ease-in-out"

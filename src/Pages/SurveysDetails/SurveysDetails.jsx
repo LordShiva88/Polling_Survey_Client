@@ -22,7 +22,7 @@ const SurveysDetails = () => {
   const [comment, setComment] = useState("");
   const [surveys, surveyPending, fetch] = useSurvey();
   const navigate = useNavigate();
-  
+
   const getSurvey = surveys.find((survey) => survey._id === id);
   const {
     data: comments = [],
@@ -134,20 +134,23 @@ const SurveysDetails = () => {
             </div>
           </form>
           <div className="">
-            {
-              isProUser ? <button
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-96"
-              onClick={handleFeedback}
-              disabled={!isProUser}
-            >
-              Submit
-            </button> : <NavLink
-            to={"/checkout"}
-            className="btn w-96 flex items-center space-x-2 btn-outline btn-info"
-          >
-            <FaCrown />Get Pro Badge
-          </NavLink>
-            }
+            {isProUser ? (
+              <button
+                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-96"
+                onClick={handleFeedback}
+                disabled={!isProUser}
+              >
+                Submit
+              </button>
+            ) : (
+              <NavLink
+                to={"/checkout"}
+                className="btn w-96 flex items-center space-x-2 btn-outline btn-info"
+              >
+                <FaCrown />
+                Get Pro Badge
+              </NavLink>
+            )}
           </div>
           <div className="flex mt-4 space-x-4">
             <button

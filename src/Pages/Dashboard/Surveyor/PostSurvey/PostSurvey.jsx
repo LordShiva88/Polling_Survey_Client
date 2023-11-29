@@ -52,10 +52,10 @@ const PostSurvey = () => {
   return (
     <div className="">
       <Heading
-        mainHeading={'Post a Survey'}
-        subHeading={'Share your thoughts and gather feedback'}
+        mainHeading={"Post a Survey"}
+        subHeading={"Share your thoughts and gather feedback"}
       ></Heading>
-       <div className="bg-white p-6 rounded-md shadow-md">
+      <div className="bg-white p-6 rounded-md shadow-md">
         <div>
           <h2 className="text-xl font-bold mb-2">Create Survey</h2>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">

@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "./useAxiosSecure";
 
-
 const useAllUser = (roleFilter) => {
   const axiosSecure = useAxiosSecure();
   const {
@@ -19,4 +18,3 @@ const useAllUser = (roleFilter) => {
 };
 
 export default useAllUser;
-

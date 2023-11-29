@@ -91,7 +91,7 @@ const AllSurveyRequest = () => {
                     >
                       Publish
                     </button>
-                    <Modal btnName={'Reject'}>
+                    <Modal btnName={"Reject"}>
                       <div className="p-5 border flex  flex-col gap-5">
                         <textarea
                           className="resize-none  p-4 border-2 border-blue-500 rounded focus:outline-none focus:ring focus:border-blue-300 placeholder-gray-500"

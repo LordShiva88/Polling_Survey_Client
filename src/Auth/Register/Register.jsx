@@ -70,10 +70,7 @@ const Register = () => {
             className=" flex-1 space-y-4 shadow-lg p-10  bg-opacity-75 backdrop-blur-md rounded-md text-white md:max-w-xl"
           >
             <div>
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium"
-              >
+              <label htmlFor="name" className="block text-sm font-medium">
                 Name
               </label>
               <input
@@ -86,10 +83,7 @@ const Register = () => {
               )}
             </div>
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium"
-              >
+              <label htmlFor="email" className="block text-sm font-medium">
                 Email Address
               </label>
               <input
@@ -103,10 +97,7 @@ const Register = () => {
             </div>
 
             <div className="relative">
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium"
-              >
+              <label htmlFor="password" className="block text-sm font-medium">
                 Password
               </label>
               <input

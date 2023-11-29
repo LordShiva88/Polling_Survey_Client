@@ -22,7 +22,6 @@ import TrackSurvey from "../Pages/Dashboard/Surveyor/TrackSurvey/TrackSurvey";
 import Error from "../Pages/Error/Error";
 import Payment from "../Pages/CheckOut/Payment";
 
-
 const Router = createBrowserRouter([
   {
     path: "/",

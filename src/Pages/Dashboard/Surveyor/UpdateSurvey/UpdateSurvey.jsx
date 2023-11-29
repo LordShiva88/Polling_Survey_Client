@@ -1,5 +1,4 @@
 import { useFieldArray, useForm } from "react-hook-form";
-import PageBanner from "../../../../Components/PageBanner";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import { AiTwotoneDelete } from "react-icons/ai";
@@ -55,9 +54,7 @@ const UpdateSurvey = () => {
 
   return (
     <div>
-      <Heading
-      mainHeading={'Update Survey'}
-      ></Heading>
+      <Heading mainHeading={"Update Survey"}></Heading>
       <div className="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
         <div>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
