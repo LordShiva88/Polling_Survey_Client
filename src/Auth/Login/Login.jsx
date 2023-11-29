@@ -7,11 +7,11 @@ import {
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
-import Container from "../../Components/Container";
 import { useForm } from "react-hook-form";
 import HelmetProvider from "../../Components/HelmetProvider";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import Heading from "../../Components/Heading";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -19,6 +19,7 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
+  console.log(from);
   const {
     register,
     handleSubmit,
@@ -33,9 +34,9 @@ const Login = () => {
     if (validateCaptcha(data.captcha)) {
       logIn(data.email, data.password)
         .then((res) => {
-          if (res.data) {
+          if (res.user) {
             toast.success("Login Successful");
-            navigate(from, { replace: true });
+            navigate(from);
           }
         })
         .catch((error) => toast.error(error.message));
@@ -45,32 +46,26 @@ const Login = () => {
   };
 
   return (
-    <Container>
-      <div
-        className="flex md:flex-row flex-col items-center"
-        style={{
-          backgroundImage: `url(${""})`,
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        <div className="md:max-w-xl w-full p-10 flex-1">
-          <HelmetProvider
-            helmetTitle={"Polling Survey || Login"}
-          ></HelmetProvider>
+    <div
+      className="hero relative bg-cover bg-center h-screen"
+      style={{
+        backgroundImage: `url(https://i.ibb.co/pxCYXmq/pexels-photo-268533.jpg)`,
+      }}
+    >
+      <div className="hero-overlay bg-opacity-70"></div>
 
-          <h1 className="text-2xl font-bold mb-8 text-center">Login</h1>
-
+      <div className="">
+        <HelmetProvider
+          helmetTitle={"Polling Survey || Login"}
+        ></HelmetProvider>
+        <Heading mainHeading={"Login Now"}></Heading>
+        <div className="flex justify-between gap-10">
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="space-y-4 shadow-lg p-4"
+            className=" flex-1 space-y-4 shadow-lg p-10  bg-opacity-75 backdrop-blur-md rounded-md text-white md:max-w-xl"
           >
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-600"
-              >
+              <label htmlFor="email" className="block text-sm font-medium ">
                 Email Address
               </label>
               <input
@@ -84,10 +79,7 @@ const Login = () => {
             </div>
 
             <div className="relative">
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-600"
-              >
+              <label htmlFor="password" className="block text-sm font-medium ">
                 Password
               </label>
               <input
@@ -111,7 +103,7 @@ const Login = () => {
               <LoadCanvasTemplate />
               <input
                 type="text"
-                className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+                className="mt-1 p-2 w-full border text-black border-gray-300 rounded-md"
                 {...register("captcha", { required: true })}
               />
             </div>
@@ -123,7 +115,7 @@ const Login = () => {
                 name="acceptTerms"
                 className="mr-2"
               />
-              <label htmlFor="acceptTerms" className="text-sm text-gray-600">
+              <label htmlFor="acceptTerms" className="text-sm ">
                 Accept Terms and Conditions
               </label>
             </div>
@@ -145,13 +137,15 @@ const Login = () => {
             </div>
             <SocialLogin></SocialLogin>
           </form>
-        </div>
-
-        <div className="flex-1 hidden md:block">
-          <img src="" alt="" className="" />
+          <div className="flex-1 w-full md:block hidden">
+            <img
+              src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+              alt="Phone image"
+            />
+          </div>
         </div>
       </div>
-    </Container>
+    </div>
   );
 };
 

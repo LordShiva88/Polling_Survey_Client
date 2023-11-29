@@ -127,77 +127,60 @@ const Dashboard = () => {
   );
   return (
     <Container>
-    <div>
-      {/* Mobile navigation */}
-      <div className="drawer md:hidden">
-        {/* Input for toggling the drawer */}
-        <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-        {/* Drawer content */}
-        <div className="drawer-content min-w-fit flex flex-col">
-          {/* Navbar */}
-          <div className="w-full navbar bg-base-300">
-            {/* Drawer toggle button */}
-            <div className="flex-none navbar-start">
-              <label
-                htmlFor="my-drawer-3"
-                aria-label="open sidebar"
-                className="btn btn-square btn-ghost"
-              >
-                <FaBars></FaBars>
-              </label>
+      <div>
+        {/* Mobile navigation */}
+        <div className="drawer md:hidden">
+          <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
+          <div className="drawer-content min-w-fit flex flex-col">
+            <div className="w-full navbar bg-base-300">
+              <div className="flex-none navbar-start">
+                <label
+                  htmlFor="my-drawer-3"
+                  aria-label="open sidebar"
+                  className="btn btn-square btn-ghost"
+                >
+                  <FaBars></FaBars>
+                </label>
+              </div>
+              <div className="flex-1 px-2 mx-2 navbar-end">
+                <img src={logo} alt="" className="w-10" />
+                <h1>SURVEY SIFT</h1>
+              </div>
             </div>
-            {/* Logo and title */}
-            <div className="flex-1 px-2 mx-2 navbar-end">
-              <img src={logo} alt="" className="w-10" />
-              <h1>SURVEY SIFT</h1>
-            </div>
+            <Outlet></Outlet>
           </div>
-          {/* Outlet for rendering nested routes */}
-          <Outlet></Outlet>
+          <div className="drawer-side">
+            <label
+              htmlFor="my-drawer-3"
+              aria-label="close sidebar"
+              className="drawer-overlay"
+            ></label>
+            <ul className="menu bg-gray-500 h-screen fixed z-10 px-5 text-white space-y-3">
+              <div className="flex items-center gap-2">
+                <img src={logo} alt="" className="w-10" />
+                <p className="text-xl font-bold text-red-400">Survey Sift</p>
+              </div>
+              {navLink}
+            </ul>
+          </div>
         </div>
-        {/* Drawer side panel */}
-        <div className="drawer-side">
-          {/* Overlay for closing the sidebar */}
-          <label
-            htmlFor="my-drawer-3"
-            aria-label="close sidebar"
-            className="drawer-overlay"
-          ></label>
-          {/* Sidebar menu */}
-          <ul className="menu bg-gray-500 h-screen fixed z-10 px-5 text-white space-y-3">
-            {/* Logo and title in sidebar */}
-            <div className="flex items-center gap-2">
-              <img src={logo} alt="" className="w-10" />
-              <p className="text-xl font-bold text-red-400">Survey Sift</p>
-            </div>
-            {/* Navigation links */}
-            {navLink}
-          </ul>
-        </div>
-      </div>
-      {/* Desktop navigation */}
-      <div className="hidden md:flex gap-5">
-        {/* Sidebar */}
-        <div className="">
-          {/* Sidebar menu */}
-          <ul className="menu bg-gray-500 h-screen px-5 text-white space-y-3 w-52 fixed">
-            {/* Logo and title in sidebar */}
-            <div className="flex items-center gap-2">
-              <img src={logo} alt="" className="w-10" />
-              <p className="text-xl font-bold text-red-400">Survey Sift</p>
-            </div>
-            {/* Navigation links */}
-            {navLink}
-          </ul>
-        </div>
-        {/* Main content area */}
-        <div className="w-full ml-52">
-          {/* Outlet for rendering nested routes */}
-          <Outlet></Outlet>
+        {/* Desktop navigation */}
+        <div className="hidden md:flex gap-5">
+          <div className="">
+            <ul className="menu bg-gray-500 h-screen px-5 text-white space-y-3 w-52 fixed">
+              <div className="flex items-center gap-2">
+                <img src={logo} alt="" className="w-10" />
+                <p className="text-xl font-bold text-red-400">Survey Sift</p>
+              </div>
+              {navLink}
+            </ul>
+          </div>
+          <div className="w-full ml-52">
+            <Outlet></Outlet>
+          </div>
         </div>
       </div>
-    </div>
-  </Container>
+    </Container>
   );
 };
 

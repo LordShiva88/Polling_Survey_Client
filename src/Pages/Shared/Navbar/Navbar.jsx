@@ -58,41 +58,16 @@ const Navbar = () => {
           <img src={logo} alt="Logo" className="w-10 mr-2" />
           <span className="text-blue-700">Survey Sift</span>
         </div>
-
         <div className="">
-          {/* <div className="dropdown">
-            <label tabIndex={0} className="btn btn-ghost md:hidden">
-              <FaBars className="text-2xl"></FaBars>
-            </label>
-            <ul
-              tabIndex={0}
-              className="dropdown-content mt-3 z-[1] space-y-5 shadow rounded-box w-52 btnStyle bg-white text-black py-5 flex-col"
-            >
-              {navLinks.map((link) => (
-                <li key={link.to}>
-                  <NavLink
-                    to={link.to}
-                    className={({ isActive }) =>
-                      isActive
-                        ? "border-0 border-b-4 border-blue-500 rounded-lg p-2"
-                        : "hover:text-blue-500 transition duration-300 border-0 hover:border-b-4 hover:border-blue-500 rounded-lg p-2"
-                    }
-                  >
-                    {link.text}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </div> */}
           <div className="drawer md:hidden">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
               {/* Page content here */}
               <label
                 htmlFor="my-drawer"
-                className="btn btn-primary drawer-button"
+                className="btn drawer-button"
               >
-                <FaBars className="text-2xl"></FaBars>
+                <FaBars className="text-xl"></FaBars>
               </label>
             </div>
             <div className="drawer-side">
@@ -101,12 +76,11 @@ const Navbar = () => {
                 aria-label="close sidebar"
                 className="drawer-overlay"
               ></label>
-              <ul className="menu bg-gray-500 h-screen px-5 text-white space-y-3 w-52 fixed">
+              <ul className="menu bg-gray-500 h-screen px-5 text-white space-y-3 w-60 fixed">
                 <div className="flex items-center gap-2">
                   <img src={logo} alt="" className="w-10" />
                   <p className="text-xl font-bold text-red-400">Survey Sift</p>
                 </div>
-
                 {navLinks.map((link) => (
                   <li key={link.to}>
                     <NavLink

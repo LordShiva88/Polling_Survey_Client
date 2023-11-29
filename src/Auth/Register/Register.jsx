@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import Container from "../../Components/Container";
 import HelmetProvider from "../../Components/HelmetProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import SocialLogin from "../Login/SocialLogin";
@@ -10,6 +9,7 @@ import { updateProfile } from "firebase/auth";
 import ImageHost from "../../Hooks/ImageHost";
 import toast, { Toaster } from "react-hot-toast";
 import useAxios from "../../Hooks/useAxios";
+import Heading from "../../Components/Heading";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -51,31 +51,28 @@ const Register = () => {
   };
 
   return (
-    <Container>
-      <div
-        className="flex md:flex-row flex-col items-center"
-        style={{
-          backgroundImage: `url(${""})`,
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        <div className="md:max-w-xl w-full p-10 flex-1">
-          <HelmetProvider
-            helmetTitle={"Polling Survey || Login"}
-          ></HelmetProvider>
+    <div
+      className="hero relative bg-cover bg-center h-screen"
+      style={{
+        backgroundImage: `url(https://i.ibb.co/pxCYXmq/pexels-photo-268533.jpg)`,
+      }}
+    >
+      <div className="hero-overlay bg-opacity-70"></div>
 
-          <h1 className="text-2xl font-bold mb-8 text-center">Login</h1>
-
+      <div className="">
+        <HelmetProvider
+          helmetTitle={"Polling Survey || Login"}
+        ></HelmetProvider>
+        <Heading mainHeading={"Login Now"}></Heading>
+        <div className="flex justify-between gap-10">
           <form
             onSubmit={handleSubmit(handleCreateUser)}
-            className="space-y-4 shadow-lg p-4"
+            className=" flex-1 space-y-4 shadow-lg p-10  bg-opacity-75 backdrop-blur-md rounded-md text-white md:max-w-xl"
           >
             <div>
               <label
                 htmlFor="name"
-                className="block text-sm font-medium text-gray-600"
+                className="block text-sm font-medium"
               >
                 Name
               </label>
@@ -91,7 +88,7 @@ const Register = () => {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-gray-600"
+                className="block text-sm font-medium"
               >
                 Email Address
               </label>
@@ -108,7 +105,7 @@ const Register = () => {
             <div className="relative">
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-gray-600"
+                className="block text-sm font-medium"
               >
                 Password
               </label>
@@ -131,7 +128,7 @@ const Register = () => {
 
             <div className="form-control w-full max-w-xs">
               <label className="label">
-                <label className="block text-sm font-medium text-gray-600">
+                <label className="block text-sm font-medium">
                   Upload An Picture
                 </label>
               </label>
@@ -152,7 +149,7 @@ const Register = () => {
                 name="acceptTerms"
                 className="mr-2"
               />
-              <label htmlFor="acceptTerms" className="text-sm text-gray-600">
+              <label htmlFor="acceptTerms" className="text-sm">
                 Accept Terms and Conditions
               </label>
             </div>
@@ -176,14 +173,16 @@ const Register = () => {
 
             <SocialLogin></SocialLogin>
           </form>
-        </div>
-
-        <div className="flex-1 hidden md:block">
-          <img src="" alt="" className="" />
+          <div className="flex-1 w-full md:block hidden">
+            <img
+              src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+              alt="Phone image"
+            />
+          </div>
         </div>
       </div>
       <Toaster />
-    </Container>
+    </div>
   );
 };
 

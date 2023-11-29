@@ -44,7 +44,7 @@ const SocialLogin = () => {
         <FcGoogle className="h-6 w-6" />
       </button>
       <button className="flex items-center bg-white border border-gray-300 rounded-lg shadow-md p-2 hover:bg-gray-100 transition duration-300">
-        <FaGithub className="h-6 w-6" />
+        <FaGithub className="h-6 w-6 text-black" />
       </button>
       <button className="flex items-center bg-white border border-gray-300 rounded-lg shadow-md p-2 hover:bg-gray-100 transition duration-300">
         <FaFacebookSquare className="h-6 w-6 text-blue-500" />

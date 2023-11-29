@@ -6,6 +6,7 @@ import { AiTwotoneDelete } from "react-icons/ai";
 import useSurvey from "../../../../Hooks/useSurvey";
 import { useNavigate, useParams } from "react-router-dom";
 import Loading from "../../../../Components/Loading";
+import Heading from "../../../../Components/Heading";
 const UpdateSurvey = () => {
   const [surveys, isPending, refetch] = useSurvey();
   const axios = useAxiosSecure();
@@ -54,11 +55,10 @@ const UpdateSurvey = () => {
 
   return (
     <div>
-      <PageBanner></PageBanner>
+      <Heading
+      mainHeading={'Update Survey'}
+      ></Heading>
       <div className="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
-        <h1 className="text-3xl font-bold text-center mb-6 text-green-600">
-          Update Survey
-        </h1>
         <div>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="mb-4">
