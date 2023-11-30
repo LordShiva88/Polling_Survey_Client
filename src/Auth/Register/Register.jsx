@@ -102,30 +102,54 @@ const Register = () => {
               </label>
               <input
                 type={showPassword ? "text" : "password"}
-                {...register("password", { required: true })}
+                {...register("password", {
+                  required: true,
+                  minLength: 6,
+                  maxLength: 20,
+                  pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                })}
                 className="mt-1 p-2 w-full border border-gray-300 rounded-md text-black"
               />
+
               {errors.password && (
                 <span className="text-red-500">This field is required</span>
+              )}
+              {errors.password?.type === "minLength" && (
+                <p className="text-red-600">Password must be 6 characters</p>
+              )}
+              {errors.password?.type === "maxLength" && (
+                <p className="text-red-600">
+                  Password must be less than 20 characters
+                </p>
+              )}
+              {errors.password?.type === "pattern" && (
+                <p className="text-red-600">
+                  Password must have one Uppercase one lower case, one number
+                  and one special character.
+                </p>
               )}
               <span
                 onClick={() => setShowPassword(!showPassword)}
                 className="mt-5 absolute inset-y-0 right-0 flex items-center pr-2 cursor-pointer"
                 autoComplete="user"
               >
-                {showPassword ? <FaEyeSlash className="text-black"/> : <FaEye  className="text-black"/>}
+                {showPassword ? (
+                  <FaEyeSlash className="text-black" />
+                ) : (
+                  <FaEye className="text-black" />
+                )}
               </span>
             </div>
 
             <div className="form-control w-full max-w-xs">
               <label className="label">
-                <label className="block text-sm font-medium">
+                <label className="block text-sm font-medium ">
                   Upload An Picture
                 </label>
               </label>
               <input
                 type="file"
-                className="file-input file-input-bordered w-full max-w-xs"
+                className="file-input file-input-bordered w-full max-w-xs text-black"
                 {...register("photo")}
               />
               {errors.photo && (

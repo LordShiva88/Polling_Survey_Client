@@ -142,7 +142,7 @@ const SurveysDetails = () => {
           <div className="">
             {isProUser ? (
               <button
-                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-96"
+                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 md:w-96 w-full"
                 onClick={handleFeedback}
                 disabled={!isProUser}
               >
@@ -151,7 +151,7 @@ const SurveysDetails = () => {
             ) : (
               <NavLink
                 to={"/checkout"}
-                className="btn w-96 flex items-center space-x-2 btn-outline btn-info"
+                className="btn md:w-96 w-full flex items-center space-x-2 btn-outline btn-info"
               >
                 <FaCrown />
                 Get Pro Badge

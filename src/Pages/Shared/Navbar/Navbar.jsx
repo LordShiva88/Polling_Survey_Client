@@ -56,7 +56,7 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between">
         <div className="hidden md:flex items-center">
           <img src={logo} alt="Logo" className="w-10 mr-2" />
-          <span className="text-blue-700">Survey Sift</span>
+          <span className="text-red-700 text-xl font-bold">Survey Sift</span>
         </div>
         <div className="">
           <div className="drawer md:hidden">

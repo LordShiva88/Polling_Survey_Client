@@ -56,7 +56,7 @@ const Surveys = () => {
               subHeading="Explore the simplicity and effectiveness of SurveySift. Your feedback, your way."
             />
           </div>
-          <div className="flex gap-5 mb-10 lg:mb-0">
+          <div className="flex gap-5 mb-10 lg:mb-0 flex-col md:flex-row">
             <div className="relative px-6 py-2.5 w-full border border-black rounded-md">
               <input
                 onChange={(e) => setTitle(e.target.value)}

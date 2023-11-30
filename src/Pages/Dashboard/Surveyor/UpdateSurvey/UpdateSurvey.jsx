@@ -102,7 +102,14 @@ const UpdateSurvey = () => {
                   Select a category
                 </option>
                 <option value="Technology">Technology</option>
-                {/* ... (other options) ... */}
+                <option value="Science">Science</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Education">Education</option>
+                <option value="Environment">Environment</option>
+                <option value="Programming">Programming</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Mobile Development">Mobile Development</option>
+                <option value="Data Science">Data Science</option>
                 <option value="Cybersecurity">Cyber Security</option>
               </select>
               {errors.category && (
@@ -146,7 +153,7 @@ const UpdateSurvey = () => {
               type="submit"
               className="py-2 px-4 bg-green-500 text-white rounded-md w-full hover:bg-green-600 focus:outline-none focus:ring focus:border-green-300"
             >
-              Create Survey
+              Update Survey
             </button>
           </form>
         </div>

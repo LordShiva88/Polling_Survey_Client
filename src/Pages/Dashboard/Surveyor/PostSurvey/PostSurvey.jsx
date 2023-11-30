@@ -104,7 +104,7 @@ const PostSurvey = () => {
                 </option>
                 <option value="Technology">Technology</option>
                 <option value="Science">Science</option>
-                <option value="Entertainm ent">Entertainment</option>
+                <option value="Entertainment">Entertainment</option>
                 <option value="Education">Education</option>
                 <option value="Environment">Environment</option>
                 <option value="Programming">Programming</option>

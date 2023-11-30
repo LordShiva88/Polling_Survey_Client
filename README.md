@@ -5,13 +5,9 @@ Welcome to our advanced Survey sift application! This MERN stack project comes w
 ## Features 🚀
 
 1. **Homepage**
-
-   - Hero Section: Overview banner with an explore button.
    - Featured Surveys Section: Displaying most voted surveys.
    - Latest Surveys Section: Featuring recently created surveys.
-   - How It Works Section: Customizable section matching the theme.
    - Testimonials Section: Static testimonials with avatars.
-   - FAQ Section: Meaningful frequently asked questions.
 
 2. **Surveys Page (Public)**
 
@@ -23,14 +19,12 @@ Welcome to our advanced Survey sift application! This MERN stack project comes w
    - Detailed information about the survey.
    - Authorized users can vote.
    - Pro users can add comments.
-   - Visual representation of survey results with charts.
    - Like or dislike a survey.
    - Report a survey for inappropriate content.
 
 4. **Pricing Page (Public)**
 
    - Integrate a payment system for users to become pro users.
-   - Pro user navigation link in the home page navbar.
    - User role changes to pro-user on successful payment.
 
 5. **User Authentication 📤**
@@ -92,4 +86,4 @@ Welcome to our advanced Survey sift application! This MERN stack project comes w
 
 ## Live Site 🌐
 
-[Link to Live Site](#)
+[Link to Live Site](https://polling-survey-11c5d.web.app/)

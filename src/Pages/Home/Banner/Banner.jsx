@@ -10,10 +10,19 @@ const Banner = () => {
     <div className="">
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         <SwiperSlide>
-          <BannerHome></BannerHome>
+          <BannerHome
+            mainHeading="Make Your Voice Heard"
+            subHeading="Participate in Our Polls Today"
+            description="Influence positive change in your community. Your opinions matter!"
+          />
         </SwiperSlide>
+
         <SwiperSlide>
-          <BannerHome></BannerHome>
+          <BannerHome
+            mainHeading="Shape Tomorrow"
+            subHeading="Cast Your Votes, Share Your Insights"
+            description="Influence decisions and be the change you want to see in the world."
+          />
         </SwiperSlide>
       </Swiper>
     </div>
