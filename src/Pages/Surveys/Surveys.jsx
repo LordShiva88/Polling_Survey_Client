@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa6";
 import { GrDislike } from "react-icons/gr";
 import { MdReport } from "react-icons/md";
@@ -42,7 +42,11 @@ const Surveys = () => {
   return (
     <div className="">
       <HelmetProvider helmetTitle={"SurveySift || Surveys"} />
-      <PageBanner></PageBanner>
+      <PageBanner
+        title="Voice Your Opinion"
+        subTitle="Share your thoughts and make a difference in shaping our community through our interactive survey."
+        pageName="Survey"
+      ></PageBanner>
       <Container>
         {/* Search and filter options section */}
         <div className="flex justify-between gap-5 md:flex-row flex-col items-center">

@@ -50,7 +50,7 @@ const PostSurvey = () => {
       .catch((error) => console.error(error));
   };
   return (
-    <div className="">
+    <div className="max-w-xl mx-auto">
       <Heading
         mainHeading={"Post a Survey"}
         subHeading={"Share your thoughts and gather feedback"}

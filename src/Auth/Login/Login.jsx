@@ -81,7 +81,7 @@ const Login = () => {
               <input
                 type="email"
                 {...register("email", { required: true })}
-                className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+                className="mt-1 p-2 w-full border border-gray-300 rounded-md  text-black"
               />
               {errors.email && (
                 <span className="text-red-500">This field is required</span>
@@ -96,7 +96,7 @@ const Login = () => {
               <input
                 type={showPassword ? "text" : "password"}
                 {...register("password", { required: true })}
-                className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+                className="mt-1 p-2 w-full border border-gray-300 rounded-md text-black"
               />
               {errors.password && (
                 <span className="text-red-500">This field is required</span>
@@ -106,7 +106,7 @@ const Login = () => {
                 className="mt-5 absolute inset-y-0 right-0 flex items-center pr-2 cursor-pointer"
                 autoComplete="user"
               >
-                {showPassword ? <FaEyeSlash /> : <FaEye />}
+                {showPassword ? <FaEyeSlash  className="text-black"/> : <FaEye className="text-black"/>}
               </span>
             </div>
 

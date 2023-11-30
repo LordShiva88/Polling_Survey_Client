@@ -1,5 +1,4 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import Heading from "../../Components/Heading";
 import { useState } from "react";
 import { useEffect } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
@@ -26,7 +25,7 @@ const Check = () => {
   }, [axiosSecure, price]);
 
   if (loading) {
-    return;
+    return null;
   }
 
   const handleRole = () => {
@@ -39,7 +38,7 @@ const Check = () => {
       .patch(`/api/v1/users`, userRole)
       .then((res) => {
         if (res.data.modifiedCount > 0) {
-          toast.success(`User Role Updated SuccessFul ${role}`);
+          toast.success(`User Role Updated Successfully ${role}`);
         }
       })
       .catch((error) => console.error(error));
@@ -83,40 +82,61 @@ const Check = () => {
       console.log("Error Payment");
     } else {
       if (paymentIntent.status === "succeeded") {
-        toast.success(`Payment Successful id ${paymentIntent.id}`);
-        handleRole();
+        const paymentInfo = {
+          transitionId: paymentIntent.id,
+          name: user?.displayName,
+          email: user?.email,
+          time: paymentIntent.created,
+        };
+        axiosSecure.post("/payment", paymentInfo).then((res) => {
+          if (res.data.insertedId) {
+            toast.success(`Payment Successful id ${paymentIntent.id}`);
+            handleRole();
+
+          }
+        });
       }
     }
   };
 
   return (
     <div>
-      <Heading subHeading={"Payment"} mainHeading={"Payment"}></Heading>
-      <form onSubmit={handleSubmit} className="">
-        <CardElement
-          options={{
-            style: {
-              base: {
-                fontSize: "16px",
-                color: "#424770",
-                "::placeholder": {
-                  color: "#aab7c4",
+      <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+        <div className="mb-6">
+          <label
+            htmlFor="card-number"
+            className="block text-lg font-semibold mb-2 text-gray-700"
+          >
+            Card Details
+          </label>
+          <div className="bg-white rounded-md shadow-md p-3">
+            <CardElement
+              options={{
+                style: {
+                  base: {
+                    fontSize: "16px",
+                    color: "#424770",
+                    "::placeholder": {
+                      color: "#aab7c4",
+                    },
+                  },
+                  invalid: {
+                    color: "#9e2146",
+                  },
                 },
-              },
-              invalid: {
-                color: "#9e2146",
-              },
-            },
-          }}
-        />
+              }}
+            />
+          </div>
+        </div>
+
         <button
-          className="btn"
+          className="btn btn-outline w-full mt-4"
           type="submit"
           disabled={!stripe || !clientSecret}
         >
           Pay
         </button>
-        <p className="text-red-500">{error}</p>
+        <p className="text-red-500 mt-2">{error}</p>
       </form>
     </div>
   );

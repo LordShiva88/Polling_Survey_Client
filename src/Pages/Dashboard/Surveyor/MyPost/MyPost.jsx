@@ -5,20 +5,11 @@ import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../../../Components/Loading";
 import { Link } from "react-router-dom";
-import PostSurvey from "../PostSurvey/PostSurvey";
 import Heading from "../../../../Components/Heading";
 
 const MyPost = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-
-  // useEffect(() => {
-  //   axiosSecure
-  //     .get(`/api/v1/surveys/${user?.email}`)
-  //     .then((res) => setData(res.data))
-  //     .catch((error) => console.error(error));
-  // }, [axiosSecure, user]);
-
   const {
     data: surveys = [],
     isPending,
@@ -61,9 +52,6 @@ const MyPost = () => {
   }
   return (
     <div>
-      <div className="max-w-xl mx-auto">
-        <PostSurvey></PostSurvey>
-      </div>
       <Heading
         mainHeading={"All Survey"}
         subHeading={"Here is your all survey you can edit and delete!!"}

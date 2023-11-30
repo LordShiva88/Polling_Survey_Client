@@ -3,11 +3,17 @@ import Heading from "../../Components/Heading";
 import HelmetProvider from "../../Components/HelmetProvider";
 import { FaFlagCheckered } from "react-icons/fa6";
 import Testimonials from "../Home/Testimonials/Testimonials";
+import PageBanner from "../../Components/PageBanner";
 
 const AboutUs = () => {
   return (
     <div>
       <HelmetProvider helmetTitle={"SurveySift || About Us"}></HelmetProvider>
+      <PageBanner 
+  title="Discover Our Mission" 
+  subTitle="Learn about our commitment to gathering and analyzing data to foster positive change in our society."
+  pageName="About Us"
+></PageBanner>
       <Heading
         mainHeading={"About Us"}
         subHeading={

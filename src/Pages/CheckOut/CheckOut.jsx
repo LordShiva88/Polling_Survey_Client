@@ -1,7 +1,7 @@
-import { FaMoneyBill, FaUser } from "react-icons/fa";
+import {  FaUser } from "react-icons/fa";
 import { FcCheckmark } from "react-icons/fc";
 import { TfiEmail } from "react-icons/tfi";
-import useAuth from "../../Hooks/useAuth";
+import useAuth from "../../Hooks/useAuth";import Payment from "./Payment";
 const CheckOut = () => {
   const { user, loading } = useAuth();
   if (loading) {
@@ -69,44 +69,8 @@ const CheckOut = () => {
               <FaUser />
             </div>
           </div>
-          <div className="relative flex-shrink-0">
-            <label className="block text-sm font-medium">Card Number</label>
-            <input
-              type="text"
-              id="card-no"
-              name="card-no"
-              className="w-full rounded-md border border-gray-300 px-2 py-3 pl-11 text-sm shadow-sm outline-none focus:ring focus:border-blue-500"
-              placeholder="xxxx-xxxx-xxxx-xxxx"
-            />
-            <div className="pointer-events-none absolute top-8 left-0 inline-flex items-center px-3">
-              <FaMoneyBill />
-            </div>
-          </div>
-          <div className="flex gap-2">
-            <div>
-              <label className="block text-sm font-medium">Date</label>
-              <input
-                type="text"
-                name="credit-expiry"
-                className="w-full rounded-md border border-gray-300 px-2 py-3 text-sm shadow-sm outline-none focus:ring focus:border-blue-500"
-                placeholder="MM/YY"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium">cvc</label>
-              <input
-                type="text"
-                name="credit-cvc"
-                className="w-full rounded-md border border-gray-300 px-2 py-3 text-sm shadow-sm outline-none focus:ring focus:border-blue-500"
-                placeholder="CVC"
-              />
-            </div>
-          </div>
+         <Payment></Payment>
         </div>
-
-        <button className="mt-6 w-full rounded-md bg-blue-500 text-white px-6 py-3 font-medium">
-          Pay Now
-        </button>
       </div>
     </div>
   );

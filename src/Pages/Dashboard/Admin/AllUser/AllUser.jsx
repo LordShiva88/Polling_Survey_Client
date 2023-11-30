@@ -84,7 +84,7 @@ const AllUser = () => {
         <div className="scrollable">
           <table className="min-w-full bg-white border border-gray-300">
             <thead>
-              <tr className="bg-lightGray-50">
+              <tr className="bg-lightGray-50 text-left">
                 <th className="py-4 pl-6 font-medium text-left dark:text-gray-400">
                   User Info
                 </th>

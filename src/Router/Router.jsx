@@ -18,9 +18,10 @@ import AllSurveyRequest from "../Pages/Dashboard/Admin/AllSurveyRequest/AllSurve
 import CheckOut from "../Pages/CheckOut/CheckOut";
 import PrivateRouter from "./PrivateRouter";
 import AdminRouter from "./AdminRouter";
-import TrackSurvey from "../Pages/Dashboard/Surveyor/TrackSurvey/TrackSurvey";
 import Error from "../Pages/Error/Error";
 import Payment from "../Pages/CheckOut/Payment";
+import AllPayments from "../Pages/Dashboard/Admin/AllPayments/AllPayments";
+import PostSurvey from "../Pages/Dashboard/Surveyor/PostSurvey/PostSurvey";
 
 const Router = createBrowserRouter([
   {
@@ -100,10 +101,10 @@ const Router = createBrowserRouter([
         ),
       },
       {
-        path: "payment",
+        path: "allPayments",
         element: (
           <AdminRouter>
-            <Payment></Payment>
+            <AllPayments></AllPayments>
           </AdminRouter>
         ),
       },
@@ -115,7 +116,7 @@ const Router = createBrowserRouter([
       },
       {
         path: "post",
-        element: <TrackSurvey></TrackSurvey>,
+        element: <PostSurvey></PostSurvey>,
       },
       {
         path: "myPost",

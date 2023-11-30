@@ -5,7 +5,6 @@ import useAuth from "../../../../Hooks/useAuth";
 import { MdReport } from "react-icons/md";
 import { GrDislike } from "react-icons/gr";
 import moment from "moment";
-import Nodata from "../../../../Components/Nodata";
 import Modal from "../../../../Components/Modal";
 import useComments from "../../../../Hooks/useComments";
 import { useState } from "react";
@@ -32,13 +31,13 @@ const SurveyorHome = () => {
   return (
     <div className="max-w-4xl mx-auto mt-8 p-6 bg-white rounded shadow-md">
       <h1 className="text-3xl font-bold mb-4 text-blue-600">
-        All Survey Requests
+        All Survey 
       </h1>
       <div className="overflow-x-auto">
         <table className="w-full table-auto border border-collapse">
           {/* Table Head */}
           <thead>
-            <tr className="bg-blue-500 text-white">
+            <tr className="bg-blue-500 text-white text-left">
               <th className="px-4 py-2">#</th>
               <th className="px-4 py-2">Details</th>
               <th className="px-4 py-2">Progress</th>
@@ -48,7 +47,6 @@ const SurveyorHome = () => {
 
           {/* Table Body */}
           <tbody>
-            {approvedSurveys.length === 0 && <Nodata></Nodata>}
             {approvedSurveys.map((survey, index) => (
               <tr
                 key={survey._id}
@@ -62,7 +60,7 @@ const SurveyorHome = () => {
                     Date: {moment(survey.date).format("MM-D-YY, h:mm a")}
                   </p>
                 </td>
-                <td className="px-4 py-2 space-x-2">
+                <td className="space-x-2">
                   <div className="flex justify-evenly  items-center text-green-500">
                     {survey.like ? <FaHeart /> : <FaRegHeart />}
                     <p>Vote: {survey.like}</p>

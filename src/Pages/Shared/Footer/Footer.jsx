@@ -1,14 +1,15 @@
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
+import logo from '../../../assets/image/logo.png';
 
 const Footer = () => {
   return (
     <footer className="text-white bg-gray-900">
       <div className="container mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-10 justify-around py-20">
         <div className="">
-          <img src="" alt="Your Logo" className="w-36 mb-4" />
+          <img src={logo}alt="Your Logo" className="w-20 mb-4" />
           <p className="text-gray-400">
-            Your Polling Company. <br />
-            Gathering insights, shaping opinions since 20XX
+            Survey Sift Limited. <br />
+            Gathering insights, shaping opinions since 2000
           </p>
         </div>
 
@@ -19,8 +20,6 @@ const Footer = () => {
           <p>1234 Elm Street, Springfield, IL 62701, USA</p>
           <p>Email: example@example.com</p>
           <p>Phone: +1 (123) 456-7890</p>
-          <p>Mon - Fri: 08:00 - 22:00</p>
-          <p>Sat - Sun: 10:00 - 23:00</p>
         </div>
 
         <div className="">
@@ -77,9 +76,9 @@ const Footer = () => {
 
       <div className="bg-gray-700 text-gray-300 ">
         <div className="flex items-center justify-center gap-5 p-4 container mx-auto">
-          <img src="" alt="Your Logo" className="w-10" />
+          <img src={logo} alt="Your Logo" className="w-10" />
           <p>
-            Copyright © {new Date().getFullYear()} Your Polling Company. All
+            Copyright © {new Date().getFullYear()}  SurveySift Company. All
             rights reserved.
           </p>
         </div>

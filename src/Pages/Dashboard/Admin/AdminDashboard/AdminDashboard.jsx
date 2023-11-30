@@ -5,6 +5,7 @@ import { FaHeart, FaRegHeart } from "react-icons/fa6";
 import { GrDislike } from "react-icons/gr";
 import { MdReport } from "react-icons/md";
 import { FaDollarSign, FaShoppingCart, FaUsers } from "react-icons/fa";
+import Heading from "../../../../Components/Heading";
 
 const AdminDashboard = () => {
   const [surveys, isPending] = useSurvey();
@@ -17,7 +18,11 @@ const AdminDashboard = () => {
   );
   return (
     <div>
-      <div className="flex-1 bg-white rounded-lg mt-4 p-8">
+      <Heading
+        subHeading={"Here All Progress Of Your Website"}
+        mainHeading={"Home"}
+      ></Heading>
+      <div className="flex-1 bg-white rounded-lg">
         <h4 className="text-xl font-bold">Statistics</h4>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-4">
           <div className="px-6 py-6 bg-gray-100 border border-gray-300 rounded-lg shadow-xl">
@@ -86,7 +91,6 @@ const AdminDashboard = () => {
           </div>
         </div>
       </div>
-
       <div className="max-w-4xl mx-auto mt-8 p-6 bg-white rounded shadow-md">
         <h1 className="text-3xl font-bold mb-4 text-blue-600">
           All Survey Requests
@@ -96,7 +100,7 @@ const AdminDashboard = () => {
           <table className="w-full table-auto border border-collapse">
             {/* Table Head */}
             <thead>
-              <tr className="bg-blue-500 text-white">
+              <tr className="bg-blue-500 text-white text-left">
                 <th className="px-4 py-2">#</th>
                 <th className="px-4 py-2">Title</th>
                 <th className="px-4 py-2">Actions</th>
@@ -117,7 +121,7 @@ const AdminDashboard = () => {
                   key={survey._id}
                   className={index % 2 === 0 ? "bg-gray-100" : ""}
                 >
-                  <td className="px-4 py-2">{index + 1}</td>
+                  <td className="text-left px-4 py-2">{index + 1}</td>
                   <td className="px-4 py-2">
                     <h2 className="font-bold text-blue-600">{survey.title}</h2>
                     <p className="text-sm text-gray-600">
@@ -127,7 +131,7 @@ const AdminDashboard = () => {
                       Date: {moment(survey.date).format("MM-D-YY, h:mm a")}
                     </p>
                   </td>
-                  <td className="px-4 py-2 space-x-2">
+                  <td className="space-x-2 ">
                     <div className="flex justify-evenly  items-center text-green-500">
                       {survey.like ? <FaHeart /> : <FaRegHeart />}
                       <p>Vote: {survey.like}</p>

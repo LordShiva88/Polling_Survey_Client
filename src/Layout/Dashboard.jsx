@@ -57,7 +57,7 @@ const Dashboard = () => {
           </li>
           <li>
             <NavLink
-              to="/dashboard/payment"
+              to="/dashboard/allPayments"
               className="flex items-center px-4 py-2 "
             >
               <FaMoneyBill className="mr-2" />

@@ -12,6 +12,7 @@ import HelmetProvider from "../../Components/HelmetProvider";
 import Container from "../../Components/Container";
 import Loading from "../../Components/Loading";
 import useRole from "../../Hooks/useRole";
+import PageBanner from "../../Components/PageBanner";
 
 const SurveysDetails = () => {
   const { userRole, userRolePending } = useRole();
@@ -83,10 +84,15 @@ const SurveysDetails = () => {
   const isProUser = userRole?.userRole === "Pro User";
 
   return (
-    <div className="p-8 bg-gradient-to-b from-blue-500 via-blue-300 to-white text-white min-h-screen">
+    <div className="bg-gradient-to-b from-blue-500 via-blue-300 to-white text-white min-h-screen">
       <HelmetProvider helmetTitle={"SurveySift || Surveys Details"} />
+      <PageBanner
+        title="Dive Deeper into Insights"
+        subTitle="Explore in-depth survey results and gain valuable insights into the collective opinions of our community."
+        pageName="Survey Details"
+      ></PageBanner>
       <Container>
-        <div className="mt-20 p-6 max-w-4xl mx-auto bg-white rounded-lg shadow-md">
+        <div className="my-20 p-6 max-w-4xl mx-auto bg-white rounded-lg shadow-md">
           <h2 className="text-4xl font-bold mb-6 text-blue-600">
             {getSurvey?.title}
           </h2>
