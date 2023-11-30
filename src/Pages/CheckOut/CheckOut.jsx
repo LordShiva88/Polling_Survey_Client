@@ -1,7 +1,8 @@
-import {  FaUser } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 import { FcCheckmark } from "react-icons/fc";
 import { TfiEmail } from "react-icons/tfi";
-import useAuth from "../../Hooks/useAuth";import Payment from "./Payment";
+import useAuth from "../../Hooks/useAuth";
+import Payment from "./Payment";
 const CheckOut = () => {
   const { user, loading } = useAuth();
   if (loading) {
@@ -69,7 +70,7 @@ const CheckOut = () => {
               <FaUser />
             </div>
           </div>
-         <Payment></Payment>
+          <Payment></Payment>
         </div>
       </div>
     </div>
