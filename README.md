@@ -81,7 +81,7 @@ Welcome to our advanced Survey sift application! This MERN stack project comes w
 - **Backend:**
   - Node.js
   - Express.js
-  - MongoDB (Mongoose ODM)
+  - MongoDB
   - JWT for authentication
 
 ## Live Site 🌐
