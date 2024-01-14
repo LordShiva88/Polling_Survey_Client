@@ -2,6 +2,11 @@
 
 Welcome to our advanced Survey sift application! This MERN stack project comes with integrated payment functionalities, robust user management, and a feature-rich admin dashboard. Crafted for survey creation, voting, result analysis, and seamless user interaction.
 
+## Admin login: 
+ Admin email: litonnath123@gmail.com
+ Admin password: 123Aa@
+## [Server side Code Link ](https://github.com/programming-hero-web-course1/b8a12-server-side-LordShiva88)
+
 ## Features 🚀
 
 1. **Homepage**
